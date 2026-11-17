@@ -2,7 +2,7 @@
 <html lang="tr" data-t="dark">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, viewport-fit=cover">
 <title>Pushback – Havacıların Frekansı</title>
 <meta name="theme-color" content="#070b14">
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%27%20viewBox%3D%270%200%20512%20512%27%3E%3Crect%20width%3D%27512%27%20height%3D%27512%27%20fill%3D%27%23070b14%27%2F%3E%3Cg%20fill%3D%27none%27%20stroke%3D%27%23ffb020%27%3E%3Ccircle%20cx%3D%27256%27%20cy%3D%27256%27%20r%3D%27170%27%20stroke-width%3D%2714%27%2F%3E%3Ccircle%20cx%3D%27256%27%20cy%3D%27256%27%20r%3D%27100%27%20stroke-opacity%3D%27.55%27%20stroke-width%3D%2710%27%2F%3E%3C%2Fg%3E%3Cpath%20d%3D%27M256%20256V86A170%20170%200%200%201%20403%20171Z%27%20fill%3D%27%23ffb020%27%20fill-opacity%3D%27.45%27%2F%3E%3Cpath%20d%3D%27M256%20256V86%27%20stroke%3D%27%23ffb020%27%20stroke-width%3D%2714%27%20stroke-linecap%3D%27round%27%2F%3E%3Ccircle%20cx%3D%27330%27%20cy%3D%27330%27%20r%3D%2716%27%20fill%3D%27%23ffb020%27%2F%3E%3Ccircle%20cx%3D%27256%27%20cy%3D%27256%27%20r%3D%2712%27%20fill%3D%27%23ffb020%27%2F%3E%3C%2Fsvg%3E">
@@ -17,7 +17,7 @@
 --mono:ui-monospace,"SF Mono",Menlo,Consolas,"Liberation Mono",monospace}
 html[data-t="dark"]{--bg:#070b14;--panel:#0d1525;--panel2:#142036;--line:#1d2c47;--text:#e6ecf8;--muted:#7f8fae;--grid:rgba(120,160,255,.04);--glow:rgba(255,176,32,.08);--shadow:0 10px 40px rgba(0,0,0,.5);color-scheme:dark}
 html[data-t="light"]{--bg:#f1ede2;--panel:#fbf9f2;--panel2:#ebe6d6;--line:#d6cfb8;--text:#14213a;--muted:#667189;--grid:rgba(20,33,58,.05);--glow:rgba(255,176,32,.18);--shadow:0 10px 30px rgba(60,50,20,.15);--red:#d6264a;--green:#0f9b6c;--blue:#1d6fd0;color-scheme:light}
-*{box-sizing:border-box}
+*{box-sizing:border-box}html,body{max-width:100%;overflow-x:hidden}input,textarea,select{font-size:16px}
 html,body{margin:0;background:var(--bg);color:var(--text);font-family:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;font-size:15px;line-height:1.45}
 body{background-image:radial-gradient(circle at 88% -8%,var(--glow) 0,transparent 42%),linear-gradient(var(--grid) 1px,transparent 1px),linear-gradient(90deg,var(--grid) 1px,transparent 1px);background-size:auto,34px 34px,34px 34px;background-attachment:fixed}
 button{font:inherit;color:inherit;cursor:pointer;border:0;background:none}
@@ -211,7 +211,12 @@ main{border-left:1px solid var(--line);border-right:1px solid var(--line);min-he
 .bottom a{flex:1;text-align:center;padding:13px 0;position:relative;cursor:pointer;color:var(--muted)}.bottom a.on{color:var(--ac)}
 .bottom .badge{position:absolute;top:6px;margin:0 0 0 6px;font-size:10px}
 .auth{padding:16px}.hero{display:flex}.bigradar{width:200px}.hero p,.hero h2{display:none}
-.acts button{padding:4px 6px}.acts .sq{display:none}}
+.acts button{padding:4px 6px}.acts .sq{display:none}
+.chips{flex-wrap:nowrap;overflow-x:auto;gap:6px;padding:8px 12px;scrollbar-width:none;-webkit-overflow-scrolling:touch}.chips::-webkit-scrollbar{display:none}
+.chip{flex:0 0 auto;white-space:nowrap;padding:5px 11px;font-size:11px}
+.composer{gap:10px;padding:10px 12px}.composer .av{width:38px;height:38px}.composer textarea{font-size:16px;min-height:44px}
+.composer .row{margin-top:2px;gap:8px}.qrow{margin-top:4px}
+.topbar h1{font-size:17px;padding:10px 14px}.tabs button{padding:10px;font-size:13px}}
 .ttl{font-size:13px;color:var(--muted);margin-top:1px}
 .bns button.b-dusk,.bns button.b-sky,.bns button.b-radar,.bns button.b-sunrise,.bns button.b-storm,.bns button.b-mint{border-width:2px;border-style:solid;border-color:transparent}
 .bns button.on{border-color:var(--text)!important}
@@ -1037,7 +1042,7 @@ var a=el.getAttribute("data-act"),id=el.getAttribute("data-id"),v=el.getAttribut
 switch(a){
 case "mode":S.mode=v;S.authErr="";S.authInfo="";S.show={};render();break;
 case "login":doLogin();break;case "sendReset":doForgot();break;case "saveNewPw":doRecover();break;case "register":doRegister();break;case "logout":doLogout();break;
-case "eye":S.show[v]=!S.show[v];render();break;
+case "eye":S.show[v]=!S.show[v];var ei=document.querySelector('[data-f="'+v+'"]');if(ei){ei.type=S.show[v]?"text":"password";var eb=ei.parentNode.querySelector(".eye");if(eb){eb.innerHTML=ic(S.show[v]?"eyeoff":"eye",18);eb.title=S.show[v]?"Gizle":"Göster";}}else render();break;
 case "agree":S.form.agree=!S.form.agree;render();break;
 case "nav":S.stack=[];go(v,v==="profile"?S.me.handle:null,true);break;
 case "tab":S.tab=v;loadView();break;
@@ -1100,9 +1105,16 @@ var el=t.closest("[data-act]");
 if(el){if(el.hasAttribute("data-ov")&&t!==el)return;act(el);}
 });
 var searchTimer=null;
+function updPw(){
+[["password","password2"],["newpw","newpw2"],["cpw","cpw2"]].forEach(function(pr){
+var a=document.querySelector('[data-f="'+pr[0]+'"]'),b=document.querySelector('[data-f="'+pr[1]+'"]');
+if(a){var la=a.closest("label"),m=la&&la.querySelector(".meter");if(m){var t=document.createElement("div");t.innerHTML=meter(S.form[pr[0]]);m.replaceWith(t.firstChild);}}
+if(b){var lb=b.closest("label");if(lb){var h=lb.querySelector(".hintm");if(h)h.remove();var x=matchHint(S.form[pr[0]],S.form[pr[1]]);if(x){var d=document.createElement("div");d.innerHTML=x;lb.appendChild(d.firstChild);}}}
+});
+}
 document.addEventListener("input",function(e){
 var el=e.target,id=el.id,f=el.getAttribute("data-f"),ee=el.getAttribute("data-e"),mm=el.getAttribute("data-m");
-if(f){S.form[f]=el.value;if(/^(password2?|newpw2?|cpw2?)$/.test(f))render();return;}
+if(f){S.form[f]=el.value;if(/^(password2?|newpw2?|cpw2?)$/.test(f))updPw();return;}
 if(ee){S.ef[ee]=el.value;if(ee==="role")render();return;}
 var jj=el.getAttribute("data-j");if(jj){S.jf[jj]=el.value;return;}
 if(mm==="dtopic"){S.dtopic=el.value;return;}
@@ -1128,6 +1140,7 @@ if(el.id==="fp"){S.img={file:f,url:url};}else{S.ef.file=f;S.ef.prev=url;}
 render();
 }
 });
+document.addEventListener("mousedown",function(e){if(e.target.closest&&e.target.closest(".eye"))e.preventDefault();});
 document.addEventListener("keydown",function(e){
 if(e.key==="Escape"&&S.modal){S.modal=null;S.mf={};render();return;}
 if(e.key==="Enter"&&e.target.getAttribute&&e.target.getAttribute("data-f")&&e.target.tagName==="INPUT"){
