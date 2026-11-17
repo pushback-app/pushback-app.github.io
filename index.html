@@ -269,6 +269,18 @@ main{padding-bottom:calc(76px + env(safe-area-inset-bottom))}.bottom{padding-bot
 .qcard .qh{font-size:14px}.qcard .qh span{color:var(--muted)}.qcard .qt{margin-top:4px;white-space:pre-wrap;word-break:break-word}.qcard .pimgs{margin:8px 0 0}
 .relh{font:12px var(--mono);color:var(--muted);margin-bottom:4px;display:flex;gap:6px;align-items:center}
 .attach{display:flex;flex-wrap:wrap;gap:6px}.attach .ai{position:relative;display:inline-block}.attach img{max-height:110px}
+body:before{content:"";position:fixed;inset:0;z-index:0;pointer-events:none;background:url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='900' height='700' fill='none' stroke='%237fa0d8' stroke-width='1'><circle cx='700' cy='160' r='90'/><circle cx='700' cy='160' r='170' stroke-dasharray='3 6'/><circle cx='700' cy='160' r='260'/><path d='M0 640 L900 300 M120 0 L420 700' /><path d='M560 160h280M700 20v280'/><circle cx='210' cy='520' r='4' fill='%237fa0d8'/><circle cx='420' cy='430' r='4' fill='%237fa0d8'/></svg>") no-repeat right top/900px 700px;opacity:.11}
+html[data-t="light"] body:before{opacity:.16;filter:brightness(.45)}
+#app{position:relative;z-index:1}
+main .post{margin:8px 10px;border:1px solid var(--line);border-left:5px solid var(--rc,var(--ac));border-radius:8px;background:color-mix(in srgb,var(--panel) 80%,transparent)}
+main .post:hover{background:var(--panel)}
+main .post.big{margin:0;border-radius:0;border-left-width:1px}
+.post .head{border-bottom:1px dashed var(--line);padding-bottom:6px;margin-bottom:6px}
+.post .head .h{font-family:var(--mono);font-size:12px;letter-spacing:.02em}
+.post .head .t{margin-left:auto}
+.utc{position:fixed;top:10px;left:50%;transform:translateX(-50%);z-index:20;font:12px var(--mono);letter-spacing:.12em;color:var(--muted);border:1px solid var(--line);border-radius:6px;padding:3px 9px;background:color-mix(in srgb,var(--bg) 80%,transparent);pointer-events:none}
+@media (max-width:1020px){.utc{display:none}}
+@media (max-width:700px){main .post{margin:6px 8px}}
 </style>
 </head>
 <body>
@@ -399,6 +411,8 @@ function hash(s){var h=0;s=String(s);for(var i=0;i<s.length;i++)h=(h*31+s.charCo
 function pad(n,l){n=String(n);while(n.length<l)n="0"+n;return n;}
 function sqk(h){return pad((hash(h)%4096).toString(8),4);}
 function ago(ts){var u=I18N.units[LANG]||I18N.units.en,s=Math.floor((Date.now()-ts)/1000);if(s<60)return u[0];var m=Math.floor(s/60);if(m<60)return m+" "+u[1];var h=Math.floor(m/60);if(h<24)return h+" "+u[2];var d=Math.floor(h/24);if(d<7)return d+" "+u[3];return new Date(ts).toLocaleDateString(LOC,{day:"numeric",month:"short"});}
+function utcNow(){var d=new Date();return pad(d.getUTCHours(),2)+":"+pad(d.getUTCMinutes(),2)+"Z";}
+setInterval(function(){var e=document.getElementById("utc");if(e)e.textContent="UTC "+utcNow();},15000);
 function zulu(ts){var d=new Date(ts);return pad(d.getUTCHours(),2)+pad(d.getUTCMinutes(),2)+"Z";}
 function fullDate(ts){return new Date(ts).toLocaleDateString(LOC,{day:"numeric",month:"long",year:"numeric"});}
 var TAGCH="A-Za-z0-9_çğıöşüÇĞİÖŞÜ";
@@ -1139,7 +1153,7 @@ else if(!S.me)APP.innerHTML=authView()+toastHTML();
 else{
 var main;
 switch(S.view){case "explore":main=pageExplore();break;case "notifs":main=pageNotifs();break;case "profile":main=pageProfile();break;case "thread":main=pageThread();break;case "tag":main=pageTag();break;case "bookmarks":main=pageBookmarks();break;case "settings":main=pageSettings();break;case "edit":main=pageEdit();break;case "people":main=pagePeople();break;case "admin":main=pageAdmin();break;case "airport":main=pageAirport();break;case "qa":main=pageQA();break;case "jobs":main=pageJobs();break;case "legal":main=pageLegal();break;default:main=pageHome();}
-APP.innerHTML='<div class="shell">'+sidebar()+'<main>'+main+'</main>'+rightcol()+'</div>'+bottomnav()+'<input type="file" id="fp" accept="image/*" multiple hidden><input type="file" id="fa" accept="image/*" hidden>'+modalHTML()+toastHTML();
+APP.innerHTML='<div class="shell">'+sidebar()+'<main>'+main+'</main>'+rightcol()+'</div>'+bottomnav()+'<input type="file" id="fp" accept="image/*" multiple hidden><input type="file" id="fa" accept="image/*" hidden>'+'<div class="utc" id="utc">UTC '+utcNow()+'</div>'+modalHTML()+toastHTML();
 }
 APP.insertAdjacentHTML("beforeend",langUI());L10N(APP);
 if(fid){var el=fkey==="id"?document.getElementById(fid):document.querySelector('[data-'+fkey+'="'+fid+'"]');if(el){el.focus();if(pos!=null&&el.setSelectionRange)try{el.setSelectionRange(pos,pos);}catch(e){}}}
