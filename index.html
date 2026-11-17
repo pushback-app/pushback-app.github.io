@@ -3,15 +3,15 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Squawk – Havacıların Frekansı</title>
+<title>Pushback – Havacıların Frekansı</title>
 <meta name="theme-color" content="#070b14">
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%27%20viewBox%3D%270%200%20512%20512%27%3E%3Crect%20width%3D%27512%27%20height%3D%27512%27%20fill%3D%27%23070b14%27%2F%3E%3Cg%20fill%3D%27none%27%20stroke%3D%27%23ffb020%27%3E%3Ccircle%20cx%3D%27256%27%20cy%3D%27256%27%20r%3D%27170%27%20stroke-width%3D%2714%27%2F%3E%3Ccircle%20cx%3D%27256%27%20cy%3D%27256%27%20r%3D%27100%27%20stroke-opacity%3D%27.55%27%20stroke-width%3D%2710%27%2F%3E%3C%2Fg%3E%3Cpath%20d%3D%27M256%20256V86A170%20170%200%200%201%20403%20171Z%27%20fill%3D%27%23ffb020%27%20fill-opacity%3D%27.45%27%2F%3E%3Cpath%20d%3D%27M256%20256V86%27%20stroke%3D%27%23ffb020%27%20stroke-width%3D%2714%27%20stroke-linecap%3D%27round%27%2F%3E%3Ccircle%20cx%3D%27330%27%20cy%3D%27330%27%20r%3D%2716%27%20fill%3D%27%23ffb020%27%2F%3E%3Ccircle%20cx%3D%27256%27%20cy%3D%27256%27%20r%3D%2712%27%20fill%3D%27%23ffb020%27%2F%3E%3C%2Fsvg%3E">
 <link rel="apple-touch-icon" id="ati" href="data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%27%20viewBox%3D%270%200%20512%20512%27%3E%3Crect%20width%3D%27512%27%20height%3D%27512%27%20fill%3D%27%23070b14%27%2F%3E%3Cg%20fill%3D%27none%27%20stroke%3D%27%23ffb020%27%3E%3Ccircle%20cx%3D%27256%27%20cy%3D%27256%27%20r%3D%27170%27%20stroke-width%3D%2714%27%2F%3E%3Ccircle%20cx%3D%27256%27%20cy%3D%27256%27%20r%3D%27100%27%20stroke-opacity%3D%27.55%27%20stroke-width%3D%2710%27%2F%3E%3C%2Fg%3E%3Cpath%20d%3D%27M256%20256V86A170%20170%200%200%201%20403%20171Z%27%20fill%3D%27%23ffb020%27%20fill-opacity%3D%27.45%27%2F%3E%3Cpath%20d%3D%27M256%20256V86%27%20stroke%3D%27%23ffb020%27%20stroke-width%3D%2714%27%20stroke-linecap%3D%27round%27%2F%3E%3Ccircle%20cx%3D%27330%27%20cy%3D%27330%27%20r%3D%2716%27%20fill%3D%27%23ffb020%27%2F%3E%3Ccircle%20cx%3D%27256%27%20cy%3D%27256%27%20r%3D%2712%27%20fill%3D%27%23ffb020%27%2F%3E%3C%2Fsvg%3E">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-title" content="Squawk">
+<meta name="apple-mobile-web-app-title" content="Pushback">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-<meta name="description" content="Squawk: pilot, kabin, OCC, teknik, ATC ve yer hizmetleri için havacılara özel sosyal ağ.">
+<meta name="description" content="Pushback: pilot, kabin, OCC, teknik, ATC ve yer hizmetleri için havacılara özel sosyal ağ.">
 <style>
 :root{--ac:#ffb020;--ac-ink:#14100a;--red:#ff5c7a;--green:#3ddc97;--blue:#5aa9ff;
 --mono:ui-monospace,"SF Mono",Menlo,Consolas,"Liberation Mono",monospace}
@@ -237,7 +237,7 @@ var im=new Image();im.onload=function(){try{
 function png(n){var c=document.createElement("canvas");c.width=c.height=n;c.getContext("2d").drawImage(im,0,0,n,n);return c.toDataURL("image/png");}
 var p180=png(180),p192=png(192),p512=png(512);
 var a=document.getElementById("ati");if(a)a.href=p180;
-var m={name:"Squawk",short_name:"Squawk",description:"Havac\u0131lara \u00f6zel sosyal a\u011f",start_url:location.origin+location.pathname,scope:location.origin+"/",display:"standalone",background_color:"#070b14",theme_color:"#070b14",icons:[{src:p192,sizes:"192x192",type:"image/png"},{src:p512,sizes:"512x512",type:"image/png",purpose:"any"}]};
+var m={name:"Pushback",short_name:"Pushback",description:"Havac\u0131lara \u00f6zel sosyal a\u011f",start_url:location.origin+location.pathname,scope:location.origin+"/",display:"standalone",background_color:"#070b14",theme_color:"#070b14",icons:[{src:p192,sizes:"192x192",type:"image/png"},{src:p512,sizes:"512x512",type:"image/png",purpose:"any"}]};
 var l=document.createElement("link");l.rel="manifest";l.href=URL.createObjectURL(new Blob([JSON.stringify(m)],{type:"application/manifest+json"}));document.head.appendChild(l);
 }catch(e){}};im.src="data:image/svg+xml,"+encodeURIComponent(svg);})();
 </script>
@@ -462,7 +462,7 @@ startRealtime();loadView();
 }
 var refreshTimer=null;
 function scheduleRefresh(){clearTimeout(refreshTimer);refreshTimer=setTimeout(function(){loadView(true);},700);}
-function startRealtime(){if(S.ch||!S.me)return;S.ch=sb.channel("squawk-live").on("postgres_changes",{event:"INSERT",schema:"public",table:"posts"},scheduleRefresh).on("postgres_changes",{event:"INSERT",schema:"public",table:"notifications",filter:"user_id=eq."+S.me.id},scheduleRefresh).subscribe();}
+function startRealtime(){if(S.ch||!S.me)return;S.ch=sb.channel("pushback-live").on("postgres_changes",{event:"INSERT",schema:"public",table:"posts"},scheduleRefresh).on("postgres_changes",{event:"INSERT",schema:"public",table:"notifications",filter:"user_id=eq."+S.me.id},scheduleRefresh).subscribe();}
 function pwScore(p){var s=0;if(!p)return 0;if(p.length>=6)s++;if(p.length>=10)s++;if(/[A-Z]/.test(p)&&/[a-z]/.test(p))s++;if(/\d/.test(p)&&/[^A-Za-z0-9]/.test(p))s++;else if(/\d/.test(p)&&p.length>=8)s++;return Math.min(4,s);}
 function normPhone(raw){var d=String(raw||"").replace(/\D/g,"");if(d.indexOf("00")===0)d=d.slice(2);if(d.length===11&&d.charAt(0)==="0")d="90"+d.slice(1);else if(d.length===10&&d.charAt(0)==="5")d="90"+d;return d;}
 async function doLogin(){
@@ -583,8 +583,8 @@ if(m.postId)row.post_id=m.postId;else row.user_id=m.uid;
 var r=await sb.from("reports").insert(row);S.modal=null;S.mf={};
 toast(r.error?"Şikayet gönderilemedi.":"Şikayetin yöneticilere iletildi. Teşekkürler.");render();
 }
-async function doEdit(){var t=(S.mf.text||"").trim();if(!t||t.length>MAX)return;var r=await sb.from("posts").update({body:t}).eq("id",S.modal.post.id);S.modal=null;S.mf={};if(r.error)toast("Düzenlenemedi.");else toast("Squawk güncellendi.");loadView(true);}
-async function doDelete(){var id=S.modal.post.id,wasThread=S.view==="thread"&&S.param===id;var r=await sb.from("posts").delete().eq("id",id);S.modal=null;if(r.error){toast("Silinemedi.");render();return;}toast("Squawk silindi.");if(wasThread)back();else loadView(true);}
+async function doEdit(){var t=(S.mf.text||"").trim();if(!t||t.length>MAX)return;var r=await sb.from("posts").update({body:t}).eq("id",S.modal.post.id);S.modal=null;S.mf={};if(r.error)toast("Düzenlenemedi.");else toast("Gönderi güncellendi.");loadView(true);}
+async function doDelete(){var id=S.modal.post.id,wasThread=S.view==="thread"&&S.param===id;var r=await sb.from("posts").delete().eq("id",id);S.modal=null;if(r.error){toast("Silinemedi.");render();return;}toast("Gönderi silindi.");if(wasThread)back();else loadView(true);}
 async function doPin(id){var r=await sb.from("profiles").update({pinned_post_id:id}).eq("id",S.me.id);S.modal=null;if(!r.error){S.me.pinned_post_id=id;toast(id?"Profiline sabitlendi.":"Sabitleme kaldırıldı.");}loadView(true);}
 async function reqVerify(){var n=(S.mf.note||"").trim();if(n.length<5){toast("Lütfen birkaç cümleyle kendini doğrula (en az 5 karakter).");return;}var r=await sb.from("verification_requests").insert({user_id:S.me.id,note:n.slice(0,500)});if(r.error)toast("Talep gönderilemedi.");else{S.mf={};toast("Talebin alındı. Yönetici inceleyecek.");}loadView();}
 async function delAccount(){
@@ -713,8 +713,8 @@ function seg(opts,cur,act){return '<div class="seg">'+opts.map(function(o){retur
 function sw(on,act,v){return '<button class="sw '+(on?"on":"")+'" data-act="'+act+'" data-v="'+v+'" role="switch" aria-checked="'+(!!on)+'"></button>';}
 function pageHome(){
 return '<div class="topbar"><h1>Ana Sayfa <small>Frekans</small></h1><div class="tabs"><button class="'+(S.tab==="all"?"on":"")+'" data-act="tab" data-v="all">Herkes</button><button class="'+(S.tab==="follow"?"on":"")+'" data-act="tab" data-v="follow">Takip Ettiklerim</button></div></div>'+
-composer("draft",S.dk==="question"?"Sorunu net yaz. Uzmanlar yanıtlasın.":"Frekansta ne var? (Kısa tut, net ol.)",S.draft,S.dk==="question"?"Soruyu sor":"Squawk'la")+'<div class="chips" style="border-top:0">'+[["all","TÜMÜ"]].concat(ROLES.map(function(r){return [r.k,r.n.toUpperCase()];})).map(function(r){return '<span class="chip '+(S.hf===r[0]?"on":"")+'" data-act="hfilter" data-v="'+r[0]+'">'+esc(r[1])+'</span>';}).join("")+'</div>'+
-listPosts(S.posts,S.tab==="follow"?"Takip ettiklerin henüz yazmadı. Radar'dan havacıları takip et.":"Henüz squawk yok. İlkini sen at!");
+composer("draft",S.dk==="question"?"Sorunu net yaz. Uzmanlar yanıtlasın.":"Frekansta ne var? (Kısa tut, net ol.)",S.draft,S.dk==="question"?"Soruyu sor":"Paylaş")+'<div class="chips" style="border-top:0">'+[["all","TÜMÜ"]].concat(ROLES.map(function(r){return [r.k,r.n.toUpperCase()];})).map(function(r){return '<span class="chip '+(S.hf===r[0]?"on":"")+'" data-act="hfilter" data-v="'+r[0]+'">'+esc(r[1])+'</span>';}).join("")+'</div>'+
+listPosts(S.posts,S.tab==="follow"?"Takip ettiklerin henüz yazmadı. Radar'dan havacıları takip et.":"Henüz gönderi yok. İlkini sen at!");
 }
 var QUICK=["Kaptan Pilot","Uçuş Dispeçeri","Kabin Memuru","Kule Kontrolörü","Teknisyen","Safety Manager","Eğitmen","Öğrenci Pilot"];
 function pageExplore(){
@@ -722,9 +722,9 @@ var chips='<span class="chip '+(S.filter==="all"?"on":"")+'" data-act="filter" d
 var quick=S.q.trim()?"":'<div class="chips" style="border-top:0;padding-top:0">'+QUICK.map(function(t){return '<span class="chip" data-act="qset" data-v="'+esc(t)+'">'+esc(t)+'</span>';}).join("")+'</div>';
 var ap=/^[A-Za-z]{4}$/.test(S.q.trim())?'<div class="apcard" data-act="airport" data-v="'+esc(S.q.trim().toUpperCase())+'">'+ic("plane",18)+'<div><b>'+esc(S.q.trim().toUpperCase())+' havalimanı</b><small>Canlı METAR / TAF ve topluluk</small></div></div>':"";
 var ac=S.q.trim()?"":'<div class="chips" style="border-top:0;padding-top:0"><span class="mono" style="font-size:11px;color:var(--muted);align-self:center">TİP</span>'+ACTYPES.map(function(t){return '<span class="chip" data-act="qset" data-v="'+esc(t)+'">'+esc(t)+'</span>';}).join("")+'</div>';
-var users=S.users.length?'<div style="padding:10px 16px 2px;font:11px var(--mono);letter-spacing:.14em;color:var(--muted)">KİŞİLER</div>'+S.users.map(userRow).join("")+'<div style="padding:10px 16px 2px;font:11px var(--mono);letter-spacing:.14em;color:var(--muted)">SQUAWK\'LAR</div>':"";
+var users=S.users.length?'<div style="padding:10px 16px 2px;font:11px var(--mono);letter-spacing:.14em;color:var(--muted)">KİŞİLER</div>'+S.users.map(userRow).join("")+'<div style="padding:10px 16px 2px;font:11px var(--mono);letter-spacing:.14em;color:var(--muted)">GÖNDERİLER</div>':"";
 return '<div class="topbar"><h1>Radar <small>Tarama</small></h1></div>'+
-'<div class="search">'+ic("search",18)+'<input id="q" placeholder="Squawk, kişi, unvan veya etiket ara" value="'+esc(S.q)+'"></div>'+
+'<div class="search">'+ic("search",18)+'<input id="q" placeholder="Gönderi, kişi, unvan veya etiket ara" value="'+esc(S.q)+'"></div>'+
 '<div class="chips">'+chips+'</div>'+quick+ac+ap+users+listPosts(S.posts,"Bu frekansta sinyal yok.");
 }
 function pageAirport(){
@@ -736,7 +736,7 @@ else{var cat=w.cat||"";wxh='<div class="card wx"><div class="wxh"><b class="mono
 '<div class="wxg">'+(w.wdir!=null?'<div><small>RÜZGAR</small><b>'+esc(w.wdir)+"° / "+esc(w.wspd)+' kt</b></div>':"")+(w.vis!=null?'<div><small>GÖRÜŞ</small><b>'+esc(w.vis)+' sm</b></div>':"")+(w.temp!=null?'<div><small>SICAKLIK</small><b>'+esc(w.temp)+'°C</b></div>':"")+'</div>'+
 (w.metar?'<div class="raw"><small>METAR</small><code>'+esc(w.metar)+'</code></div>':"")+(w.taf?'<div class="raw"><small>TAF</small><code>'+esc(w.taf)+'</code></div>':"")+'<small class="mono" style="color:var(--muted)">Kaynak: aviationweather.gov · yalnızca bilgi amaçlıdır, operasyonel karar için resmi kaynakları kullan.</small></div>';}
 var ppl=S.apPeople.length?'<div style="padding:10px 16px 2px;font:11px var(--mono);letter-spacing:.14em;color:var(--muted)">BU ÜSTE ÇALIŞANLAR</div>'+S.apPeople.map(userRow).join(""):"";
-return h+wxh+ppl+'<div style="padding:10px 16px 2px;font:11px var(--mono);letter-spacing:.14em;color:var(--muted)">'+esc(id)+' HAKKINDA SQUAWK\'LAR</div>'+listPosts(S.posts,"Henüz "+id+" hakkında squawk yok. Metinde ICAO kodunu yazman yeter.");
+return h+wxh+ppl+'<div style="padding:10px 16px 2px;font:11px var(--mono);letter-spacing:.14em;color:var(--muted)">'+esc(id)+' HAKKINDA GÖNDERİLER</div>'+listPosts(S.posts,"Henüz "+id+" hakkında gönderi yok. Metinde ICAO kodunu yazman yeter.");
 }
 function pageQA(){
 var tabs='<div class="tabs"><button class="'+(S.qtab==="new"?"on":"")+'" data-act="qtab" data-v="new">Yeni</button><button class="'+(S.qtab==="open"?"on":"")+'" data-act="qtab" data-v="open">Cevapsız</button></div>';
@@ -765,17 +765,17 @@ fl("Başlık","title","örn. B737 First Officer",120)+fl("Kurum","org","Şirket 
 }
 function legalHTML(){
 var T={
-terms:["Kullanım Şartları","Squawk, havacılık çalışanları ve meraklıları için bir sosyal ağdır. Hesap açarak bu şartları kabul edersin. 18 yaşından küçükler kullanamaz. Hesabından sen sorumlusun; başkasının kimliğine bürünemezsin. Yasa dışı, nefret içerikli, taciz edici veya yanıltıcı içerik paylaşamazsın. Gizli şirket bilgisi, yolcu verisi, güvenlik açısından hassas operasyonel bilgi ve soruşturma altındaki kaza/olay detayları paylaşılmamalıdır. Squawk'taki hiçbir içerik resmi operasyonel, teknik veya hukuki tavsiye yerine geçmez; hava durumu verileri yalnızca bilgi amaçlıdır. Kuralları ihlal eden içerik kaldırılabilir, hesap kısıtlanabilir veya kapatılabilir. Hizmet olduğu gibi sunulur, kesintisiz çalışacağı garanti edilmez. Şartlar güncellenebilir; önemli değişiklikler uygulama içinden duyurulur."],
-privacy:["Gizlilik Politikası ve KVKK Aydınlatma Metni","Veri sorumlusu Squawk işletmecisidir (iletişim: aşağıdaki şikayet / başvuru kanalı). İşlenen veriler: e-posta, (isteğe bağlı) cep telefonu, kullanıcı adı, görünen ad, rol, unvan, biyografi, profil fotoğrafı, paylaşımların, beğeni / takip / yer imi kayıtları ve teknik kayıtlar. Amaçlar: hesabın oluşturulması ve giriş, platformun işletilmesi, güvenlik ve kötüye kullanımın önlenmesi, yasal yükümlülüklerin yerine getirilmesi. Hukuki sebepler: sözleşmenin ifası, meşru menfaat, hukuki yükümlülük ve gerektiğinde açık rıza (KVKK m.5). Telefon numaran ve e-postan başkalarına gösterilmez. Veriler altyapı sağlayıcıları (Supabase, GitHub Pages) üzerinde işlenir ve yurt dışına aktarılabilir. Verilerin hesap açık kaldığı sürece saklanır; Ayarlar > Hesabımı sil ile tüm verilerin kalıcı olarak silinir. KVKK m.11 uyarınca bilgi talep etme, düzeltme, silme, işlemeye itiraz etme haklarına sahipsin; başvurunu Ayarlar altındaki iletişim kanalından yapabilirsin."],
+terms:["Kullanım Şartları","Pushback, havacılık çalışanları ve meraklıları için bir sosyal ağdır. Hesap açarak bu şartları kabul edersin. 18 yaşından küçükler kullanamaz. Hesabından sen sorumlusun; başkasının kimliğine bürünemezsin. Yasa dışı, nefret içerikli, taciz edici veya yanıltıcı içerik paylaşamazsın. Gizli şirket bilgisi, yolcu verisi, güvenlik açısından hassas operasyonel bilgi ve soruşturma altındaki kaza/olay detayları paylaşılmamalıdır. Pushback'teki hiçbir içerik resmi operasyonel, teknik veya hukuki tavsiye yerine geçmez; hava durumu verileri yalnızca bilgi amaçlıdır. Kuralları ihlal eden içerik kaldırılabilir, hesap kısıtlanabilir veya kapatılabilir. Hizmet olduğu gibi sunulur, kesintisiz çalışacağı garanti edilmez. Şartlar güncellenebilir; önemli değişiklikler uygulama içinden duyurulur."],
+privacy:["Gizlilik Politikası ve KVKK Aydınlatma Metni","Veri sorumlusu Pushback işletmecisidir (iletişim: aşağıdaki şikayet / başvuru kanalı). İşlenen veriler: e-posta, (isteğe bağlı) cep telefonu, kullanıcı adı, görünen ad, rol, unvan, biyografi, profil fotoğrafı, paylaşımların, beğeni / takip / yer imi kayıtları ve teknik kayıtlar. Amaçlar: hesabın oluşturulması ve giriş, platformun işletilmesi, güvenlik ve kötüye kullanımın önlenmesi, yasal yükümlülüklerin yerine getirilmesi. Hukuki sebepler: sözleşmenin ifası, meşru menfaat, hukuki yükümlülük ve gerektiğinde açık rıza (KVKK m.5). Telefon numaran ve e-postan başkalarına gösterilmez. Veriler altyapı sağlayıcıları (Supabase, GitHub Pages) üzerinde işlenir ve yurt dışına aktarılabilir. Verilerin hesap açık kaldığı sürece saklanır; Ayarlar > Hesabımı sil ile tüm verilerin kalıcı olarak silinir. KVKK m.11 uyarınca bilgi talep etme, düzeltme, silme, işlemeye itiraz etme haklarına sahipsin; başvurunu Ayarlar altındaki iletişim kanalından yapabilirsin."],
 rules:["Topluluk Kuralları","1) Saygılı ol: hakaret, taciz, nefret söylemi yok. 2) Gizlilik: yolcu verisi, şirket sırrı, kişisel veri paylaşma. 3) Emniyet: yanlış veya yanıltıcı emniyet bilgisi yayma; olayları kurum kanalından bildir. 4) Kimlik: başkasını taklit etme, sahte onay iddiası yok. 5) Spam ve reklam yok; ilanlar yalnızca İlanlar bölümünde. 6) Yasa dışı içerik yok. İhlaller şikayet edilir; yönetim içeriği kaldırabilir veya hesabı kısıtlayabilir."],
 report:["Şikayet ve İçerik Kaldırma","Bir paylaşımın ⋯ menüsünden veya profilden “Şikayet et” ile bildirim yapabilirsin. Yönetim bildirimleri inceler; ihlal varsa içerik kaldırılır. 5651 sayılı Kanun kapsamında hakkını ihlal eden içeriğin kaldırılması için içerik bağlantısı, hakkını gösteren açıklama ve kimlik bilgisiyle yönetime başvurabilirsin; geçerli başvurular makul sürede (en geç birkaç iş günü) değerlendirilir. Mahkeme kararları ve yetkili makam talepleri yasal süresinde yerine getirilir."]};
 return Object.keys(T).map(function(k){return '<div class="card"><h3>'+esc(T[k][0])+'</h3><p class="sub" style="white-space:pre-wrap;line-height:1.55">'+esc(T[k][1])+'</p></div>';}).join("");
 }
 function pageLegal(){return backBar("Yasal")+'<div class="note" style="text-align:left;margin:12px 16px">Bu metinler genel bilgilendirme niteliğindedir; yayına almadan önce bir hukukçuya gözden geçirtilmesi önerilir.</div>'+legalHTML();}
-function pageBookmarks(){return '<div class="topbar"><h1>Yer İmleri <small>Kayıtlı</small></h1></div>'+listPosts(S.posts,"Henüz yer imi yok. Bir squawk'taki bayrak simgesine dokun.");}
+function pageBookmarks(){return '<div class="topbar"><h1>Yer İmleri <small>Kayıtlı</small></h1></div>'+listPosts(S.posts,"Henüz yer imi yok. Bir gönderideki bayrak simgesine dokun.");}
 function pageNotifs(){
 var icons={like:["heart","var(--red)"],reply:["chat","var(--ac)"],follow:["users","var(--green)"],repost:["repeat","var(--green)"],follow_request:["lock","var(--ac)"]};
-var txt={like:"squawk'ını beğendi",reply:"squawk'ına yanıt verdi",follow:"seni takip etti",repost:"squawk'ını yeniden paylaştı",follow_request:"sana takip isteği gönderdi"};
+var txt={like:"gönderini beğendi",reply:"gönderine yanıt verdi",follow:"seni takip etti",repost:"gönderini yeniden paylaştı",follow_request:"sana takip isteği gönderdi"};
 var html='<div class="topbar"><h1>Bildirimler <small>Alıcı</small></h1></div>';
 if(S.loading&&!S.notifs.length)return html+loadr();
 if(!S.notifs.length)return html+'<div class="empty">Henüz bildirim yok.</div>';
@@ -800,9 +800,9 @@ if(u.home_base)info.push('<span class="mono" data-icao="'+esc(u.home_base)+'" st
 if(u.location)info.push('<span>'+ic("map",15)+esc(u.location)+'</span>');
 if(u.website)info.push('<span>'+ic("link",15)+'<a href="'+esc(u.website)+'" target="_blank" rel="noopener noreferrer nofollow">'+esc(u.website.replace(/^https?:\/\//,""))+'</a></span>');
 info.push('<span>'+ic("cal",15)+fullDate(new Date(u.created_at).getTime())+' tarihinde katıldı</span>');
-var tabs=[["posts","Squawk'lar"],["replies","Yanıtlar"],["media","Medya"]];if(mine)tabs.push(["likes","Beğeniler"]);
+var tabs=[["posts","Gönderiler"],["replies","Yanıtlar"],["media","Medya"]];if(mine)tabs.push(["likes","Beğeniler"]);
 var body;
-if(stt.locked)body='<div class="lock">'+ic("lock",30)+'<div style="margin-top:8px"><b style="color:var(--text)">Bu hesap gizli</b></div>Squawk\'larını görmek için takip isteği gönder.</div>';
+if(stt.locked)body='<div class="lock">'+ic("lock",30)+'<div style="margin-top:8px"><b style="color:var(--text)">Bu hesap gizli</b></div>Gönderilerini görmek için takip isteği gönder.</div>';
 else{body='<div class="tabs">'+tabs.map(function(t){return '<button class="'+(S.ptab===t[0]?"on":"")+'" data-act="ptab" data-v="'+t[0]+'">'+t[1]+'</button>';}).join("")+'</div>'+
 (S.pinned?'<div class="pinned">'+ic("pin",13)+'Sabitlenmiş</div>'+postHTML(S.pinned):"")+listPosts(S.posts,"Burada henüz bir şey yok.");}
 return backBar(u.display_name)+'<div class="banner b-'+esc(u.banner||"dusk")+'"></div><div class="prof"><div class="row">'+avatar({h:u.handle,n:u.display_name,av:u.avatar_url,r:u.role},"lg")+'<div class="btns">'+btn+'</div></div>'+
@@ -810,7 +810,7 @@ return backBar(u.display_name)+'<div class="banner b-'+esc(u.banner||"dusk")+'">
 '<div class="h">@'+esc(u.handle)+' '+roleChip(u.role)+(bk?' <span class="tagx red">'+(bk==="block"?"engelli":"sessizde")+'</span>':"")+'</div>'+
 (u.title?'<div style="margin-top:6px;font-weight:600;display:flex;align-items:center;gap:6px">'+ic("brief",16)+esc(u.title)+'</div>':"")+
 (u.bio?'<div class="bio">'+esc(u.bio)+'</div>':"")+'<div class="info">'+info.join("")+'</div>'+
-'<div class="stats"><span><b>'+(stt.locked?"–":S.posts.length)+'</b> squawk</span>'+(hide?'<span>takipçi bilgisi gizli</span>':'<a data-act="people" data-v="followers:'+esc(u.handle)+'"><b>'+stt.fl+'</b> takipçi</a><a data-act="people" data-v="following:'+esc(u.handle)+'"><b>'+stt.fg+'</b> takip</a>')+'</div></div>'+body;
+'<div class="stats"><span><b>'+(stt.locked?"–":S.posts.length)+'</b> gönderi</span>'+(hide?'<span>takipçi bilgisi gizli</span>':'<a data-act="people" data-v="followers:'+esc(u.handle)+'"><b>'+stt.fl+'</b> takipçi</a><a data-act="people" data-v="following:'+esc(u.handle)+'"><b>'+stt.fg+'</b> takip</a>')+'</div></div>'+body;
 }
 function pagePeople(){
 var kind=String(S.param).split(":")[0];
@@ -822,8 +822,8 @@ return h+(S.people.length?S.people.map(userRow).join(""):'<div class="empty">Lis
 }
 function pageThread(){
 var p=S.post;
-if(!p)return backBar("Squawk")+(S.loading?loadr():'<div class="empty">Bu squawk bulunamadı.</div>');
-var html=backBar("Squawk");
+if(!p)return backBar("Gönderi")+(S.loading?loadr():'<div class="empty">Bu gönderi bulunamadı.</div>');
+var html=backBar("Gönderi");
 if(S.parent)html+='<div style="opacity:.8">'+postHTML(S.parent,{hideReplying:true})+'</div>';
 return html+postHTML(p,{big:true})+composer("reply","Yanıtını yaz…",S.replyDraft,"Yanıtla")+threadReplies();
 }
@@ -837,7 +837,7 @@ var best=isQ&&p.ac===r.id,x=postHTML(r,{best:best});
 if(isQ&&mineQ)x+='<div style="padding:0 16px 10px;margin-top:-6px"><button class="btn sm '+(best?"ghost":"")+'" data-act="accept" data-id="'+p.id+'" data-r="'+(best?"":r.id)+'">'+(best?"İşareti kaldır":"✓ Çözüm olarak işaretle")+'</button></div>';
 return x;}).join("");
 }
-function pageTag(){return backBar("#"+S.param)+listPosts(S.posts,"Bu etiketle squawk yok.");}
+function pageTag(){return backBar("#"+S.param)+listPosts(S.posts,"Bu etiketle gönderi yok.");}
 function pageEdit(){
 var e=S.ef,m=S.me,prev=e.prev||m.avatar_url;
 var opts=ROLES.map(function(r){return '<option value="'+r.k+'"'+(e.role===r.k?" selected":"")+'>'+esc(r.n)+'</option>';}).join("");
@@ -867,9 +867,9 @@ var f=S.form;
 return '<div class="topbar"><h1>Ayarlar <small>Panel</small></h1></div>'+
 '<div class="card"><h3>Görünüm</h3><p class="sub">Tema ve vurgu rengi bu cihazda saklanır.</p>'+seg([["auto","Otomatik","auto"],["dark","Gece kokpiti","moon"],["light","Gün haritası","sun"]],S.theme,"theme")+'<div style="height:14px"></div>'+accs+'</div>'+
 '<div class="card"><h3>Gizlilik</h3><p class="sub">Hesabını kimlerin görebileceğini sen belirle.</p>'+
-'<div class="srow"><div class="g"><b>Gizli hesap</b><small>Squawk\'larını sadece onayladığın takipçiler görür.</small></div>'+sw(m.is_private,"setPrivate",m.is_private?"0":"1")+'</div>'+
+'<div class="srow"><div class="g"><b>Gizli hesap</b><small>Gönderilerini sadece onayladığın takipçiler görür.</small></div>'+sw(m.is_private,"setPrivate",m.is_private?"0":"1")+'</div>'+
 '<div class="srow"><div class="g"><b>Takipçi sayılarını gizle</b><small>Takipçi / takip listesi başkalarına kapalı olur.</small></div>'+sw(m.hide_stats,"setHide",m.hide_stats?"0":"1")+'</div></div>'+
-'<div class="card"><h3>Engellenenler ve sessizdekiler</h3><p class="sub">Bir squawk\'ın ⋯ menüsünden ekleyebilirsin.</p>'+bl+'</div>'+
+'<div class="card"><h3>Engellenenler ve sessizdekiler</h3><p class="sub">Bir gönderinin ⋯ menüsünden ekleyebilirsin.</p>'+bl+'</div>'+
 '<div class="card"><h3>Hesap</h3><p class="sub">'+esc(S.email)+'</p>'+'<label class="field"><span>Cep telefonu (giriş için, kimse görmez)</span><input data-f="cphone" type="tel" placeholder="05xx xxx xx xx" value="'+esc(f.cphone||"")+'" autocomplete="tel"></label><button class="btn sm ghost" data-act="savePhone" style="margin-bottom:16px">Telefonu kaydet</button>'+
 pwField("cpw","Yeni şifre","En az 6 karakter","new-password",meter(f.cpw))+pwField("cpw2","Yeni şifre (tekrar)","Şifreyi tekrar gir","new-password",matchHint(f.cpw,f.cpw2))+
 '<button class="btn sm" data-act="changePw">Şifreyi güncelle</button></div>'+
@@ -877,7 +877,7 @@ pwField("cpw","Yeni şifre","En az 6 karakter","new-password",meter(f.cpw))+pwFi
 '<div class="card"><h3>Yasal</h3><button class="btn sm ghost" data-act="nav" data-v="legal">Şartlar, gizlilik, KVKK, kurallar</button></div>'+
 '<div class="card"><h3>Onaylı hesap</h3><p class="sub">Gerçek bir havacı olduğunu doğrula, profilinde mavi onay işareti görünsün.</p>'+verifBox+'</div>'+
 (m.is_admin?'<div class="card"><h3>Yönetim</h3><p class="sub">Yönetici yetkin var.</p><button class="btn sm" data-act="nav" data-v="admin">'+ic("shield",16)+' Yönetim paneline git</button></div>':"")+
-'<div class="card"><h3>Oturum</h3><button class="btn sm ghost" data-act="logout">Çıkış yap</button><div style="height:14px"></div><button class="btn sm danger" data-act="delAcct">Hesabımı sil</button><p class="note" style="text-align:left">Hesabını silersen tüm squawk\'ların ve verilerin kalıcı olarak silinir.</p></div>';
+'<div class="card"><h3>Oturum</h3><button class="btn sm ghost" data-act="logout">Çıkış yap</button><div style="height:14px"></div><button class="btn sm danger" data-act="delAcct">Hesabımı sil</button><p class="note" style="text-align:left">Hesabını silersen tüm gönderilerin ve verilerin kalıcı olarak silinir.</p></div>';
 }
 function pageAdmin(){
 if(!S.me.is_admin)return '<div class="empty">Yetkin yok.</div>';
@@ -888,7 +888,7 @@ if(a.tab==="stats"){
 var s=a.stats;if(!s)return h+'<div class="empty">İstatistik alınamadı.</div>';
 var box=function(n,l){return '<div class="stat"><b>'+(n==null?0:n)+'</b><span>'+l+'</span></div>';};
 var mx=1;ROLES.forEach(function(r){mx=Math.max(mx,(s.roles||{})[r.k]||0);});
-return h+'<div class="stats4">'+box(s.users,"Kullanıcı")+box(s.users_7d,"Son 7 gün yeni")+box(s.posts,"Squawk")+box(s.posts_24h,"Son 24 saat")+box(s.verified,"Onaylı")+box(s.banned,"Yasaklı")+box(s.open_reports,"Açık şikayet")+box(s.pending_verif,"Bekleyen onay")+'</div>'+
+return h+'<div class="stats4">'+box(s.users,"Kullanıcı")+box(s.users_7d,"Son 7 gün yeni")+box(s.posts,"Gönderi")+box(s.posts_24h,"Son 24 saat")+box(s.verified,"Onaylı")+box(s.banned,"Yasaklı")+box(s.open_reports,"Açık şikayet")+box(s.pending_verif,"Bekleyen onay")+'</div>'+
 '<div class="bars"><div style="font:11px var(--mono);letter-spacing:.14em;color:var(--muted);margin-bottom:6px">ROLLERE GÖRE</div>'+ROLES.map(function(r){var n=(s.roles||{})[r.k]||0;return '<div class="b"><span>'+esc(r.n)+'</span><i style="--rc:'+r.c+';width:'+Math.max(4,Math.round(n/mx*55))+'%"></i><em>'+n+'</em></div>';}).join("")+'</div>';
 }
 if(a.tab==="reports"){
@@ -898,7 +898,7 @@ var rs=(REASONS.filter(function(x){return x[0]===r.reason;})[0]||[0,r.reason])[1
 var tgt=r.post?'<blockquote>'+esc(r.post.body)+'<br><small>@'+esc(r.post.author?r.post.author.handle:"?")+'</small></blockquote>':'<div>Kullanıcı: <b>@'+esc(r.target?r.target.handle:"?")+'</b></div>';
 var uid=r.post&&r.post.author?r.post.author.id:(r.target?r.target.id:null),banned=r.post&&r.post.author?r.post.author.is_banned:(r.target&&r.target.is_banned);
 return '<div class="arow"><span class="tagx '+(open?"red":"gr")+'">'+(open?"açık":"kapandı")+'</span> <span class="tagx">'+esc(rs)+'</span> <small class="mono" style="color:var(--muted)">@'+esc(r.reporter?r.reporter.handle:"?")+' · '+ago(new Date(r.created_at).getTime())+'</small>'+tgt+(r.detail?'<div style="color:var(--muted);font-size:13px">“'+esc(r.detail)+'”</div>':"")+
-(open?'<div class="q">'+(r.post?'<button class="btn sm danger" data-act="adm" data-k="delpost" data-id="'+r.post.id+'" data-x="'+r.id+'">Squawk\'ı sil</button>':"")+(uid?'<button class="btn sm ghost" data-act="adm" data-k="ban" data-id="'+uid+'" data-x="'+(banned?"0":"1")+'">'+(banned?"Yasağı kaldır":"Yazarı yasakla")+'</button>':"")+'<button class="btn sm ghost" data-act="adm" data-k="close" data-id="'+r.id+'">Kapat</button></div>':"")+'</div>';
+(open?'<div class="q">'+(r.post?'<button class="btn sm danger" data-act="adm" data-k="delpost" data-id="'+r.post.id+'" data-x="'+r.id+'">Gönderiyi sil</button>':"")+(uid?'<button class="btn sm ghost" data-act="adm" data-k="ban" data-id="'+uid+'" data-x="'+(banned?"0":"1")+'">'+(banned?"Yasağı kaldır":"Yazarı yasakla")+'</button>':"")+'<button class="btn sm ghost" data-act="adm" data-k="close" data-id="'+r.id+'">Kapat</button></div>':"")+'</div>';
 }).join("");
 }
 if(a.tab==="verifs"){
@@ -936,11 +936,11 @@ inner='<h3>Şikayet et</h3>'+REASONS.map(function(r){return '<label class="opt">
 '<textarea data-m="detail" maxlength="500" placeholder="İsteğe bağlı açıklama. Gizli bilgi paylaşma.">'+esc(S.mf.detail||"")+'</textarea><div class="acts2"><button class="btn ghost" data-act="mClose">Vazgeç</button><button class="btn" data-act="doReport">Gönder</button></div>';
 }else if(m.t==="edit"){
 var n=(S.mf.text||"").length;
-inner='<h3>Squawk\'ı düzenle</h3><textarea id="edtxt" data-m="text" maxlength="'+MAX+'" rows="4">'+esc(S.mf.text||"")+'</textarea><div class="acts2"><span class="cn" style="align-self:center" id="edcnt">'+(MAX-n)+'</span><button class="btn ghost" data-act="mClose">Vazgeç</button><button class="btn" data-act="doEdit">Kaydet</button></div>';
+inner='<h3>Gönderiyi düzenle</h3><textarea id="edtxt" data-m="text" maxlength="'+MAX+'" rows="4">'+esc(S.mf.text||"")+'</textarea><div class="acts2"><span class="cn" style="align-self:center" id="edcnt">'+(MAX-n)+'</span><button class="btn ghost" data-act="mClose">Vazgeç</button><button class="btn" data-act="doEdit">Kaydet</button></div>';
 }else if(m.t==="del"){
-inner='<h3>Squawk silinsin mi?</h3><p style="color:var(--muted)">Bu işlem geri alınamaz. Yanıtlar ve beğeniler de silinir.</p><div class="acts2"><button class="btn ghost" data-act="mClose">Vazgeç</button><button class="btn danger" data-act="doDelete">Sil</button></div>';
+inner='<h3>Gönderi silinsin mi?</h3><p style="color:var(--muted)">Bu işlem geri alınamaz. Yanıtlar ve beğeniler de silinir.</p><div class="acts2"><button class="btn ghost" data-act="mClose">Vazgeç</button><button class="btn danger" data-act="doDelete">Sil</button></div>';
 }else if(m.t==="delacct"){
-inner='<h3>Hesabını sil</h3><p style="color:var(--muted)">Tüm squawk\'ların, yanıtların ve profilin kalıcı olarak silinir. Onaylamak için kullanıcı adını yaz: <b>'+esc(S.me.handle)+'</b></p><label class="field"><input data-m="confirm" value="'+esc(S.mf.confirm||"")+'" autocomplete="off"></label><div class="acts2"><button class="btn ghost" data-act="mClose">Vazgeç</button><button class="btn danger" data-act="doDelAcct">Hesabı sil</button></div>';
+inner='<h3>Hesabını sil</h3><p style="color:var(--muted)">Tüm gönderilerin, yanıtların ve profilin kalıcı olarak silinir. Onaylamak için kullanıcı adını yaz: <b>'+esc(S.me.handle)+'</b></p><label class="field"><input data-m="confirm" value="'+esc(S.mf.confirm||"")+'" autocomplete="off"></label><div class="acts2"><button class="btn ghost" data-act="mClose">Vazgeç</button><button class="btn danger" data-act="doDelAcct">Hesabı sil</button></div>';
 }else if(m.t==="img"){
 return '<div class="ov" data-act="mClose"><img class="lightbox" src="'+esc(m.src)+'" alt=""></div>';
 }else if(m.t==="title"){
@@ -958,19 +958,19 @@ var LOGO='<div class="radar"></div>';
 function sidebar(){
 var u=S.unread,me=S.me;
 function item(v,ico,lbl,extra){return '<a class="'+(S.view===v?"on":"")+'" data-act="nav" data-v="'+v+'" title="'+lbl+'">'+ic(ico,22)+'<span class="lbl">'+lbl+'</span>'+(extra||"")+'</a>';}
-return '<aside class="side"><div class="brandrow">'+LOGO+'<span class="wm">SQUAWK</span></div><nav class="nav">'+item("home","home","Ana Sayfa")+item("explore","radar","Radar")+item("notifs","bell","Bildirimler",u?'<span class="badge">'+u+'</span>':"")+item("qa","chat","Sorular")+item("jobs","brief","İlanlar")+item("bookmarks","bookmark","Yer İmleri")+item("profile","user","Profil")+item("settings","settings","Ayarlar")+(me.is_admin?item("admin","shield","Yönetim"):"")+'</nav>'+
-'<button class="btn" data-act="compose">Squawk At</button><div class="me-chip" data-act="nav" data-v="profile">'+avatar({h:me.handle,n:me.display_name,av:me.avatar_url,r:me.role},"sm")+'<div><b>'+esc(me.display_name)+'</b><small>@'+esc(me.handle)+'</small></div></div></aside>';
+return '<aside class="side"><div class="brandrow">'+LOGO+'<span class="wm">PUSHBACK</span></div><nav class="nav">'+item("home","home","Ana Sayfa")+item("explore","radar","Radar")+item("notifs","bell","Bildirimler",u?'<span class="badge">'+u+'</span>':"")+item("qa","chat","Sorular")+item("jobs","brief","İlanlar")+item("bookmarks","bookmark","Yer İmleri")+item("profile","user","Profil")+item("settings","settings","Ayarlar")+(me.is_admin?item("admin","shield","Yönetim"):"")+'</nav>'+
+'<button class="btn" data-act="compose">Paylaş</button><div class="me-chip" data-act="nav" data-v="profile">'+avatar({h:me.handle,n:me.display_name,av:me.avatar_url,r:me.role},"sm")+'<div><b>'+esc(me.display_name)+'</b><small>@'+esc(me.handle)+'</small></div></div></aside>';
 }
 function rightcol(){
-return '<aside class="right"><div class="box"><h3>Gündemdeki Etiketler</h3>'+(S.trend.length?S.trend.map(function(t){return '<span class="trend" data-tag="'+esc(t.tag)+'"><b>#'+esc(t.tag)+'</b><small>'+t.n+' SQUAWK</small></span>';}).join(""):'<small style="color:var(--muted)">Henüz etiket yok</small>')+'</div>'+
+return '<aside class="right"><div class="box"><h3>Gündemdeki Etiketler</h3>'+(S.trend.length?S.trend.map(function(t){return '<span class="trend" data-tag="'+esc(t.tag)+'"><b>#'+esc(t.tag)+'</b><small>'+t.n+' GÖNDERİ</small></span>';}).join(""):'<small style="color:var(--muted)">Henüz etiket yok</small>')+'</div>'+
 '<div class="box"><h3>Frekansa yeni katılanlar</h3>'+(S.sugg.length?S.sugg.map(function(x){return '<div class="suggest">'+avatar({h:x.handle,n:x.display_name,av:x.avatar_url,r:x.role},"sm")+'<div class="grow" data-user="'+esc(x.handle)+'"><b>'+esc(x.display_name)+'</b><small>@'+esc(x.handle)+' · '+esc(x.title||role(x.role).n)+'</small></div><button class="btn sm" data-act="follow" data-user="'+esc(x.handle)+'">Takip</button></div>';}).join(""):'<small style="color:var(--muted)">Önerilecek kimse kalmadı</small>')+'</div>'+
-'<small style="color:var(--muted);padding:0 4px" class="mono">SQUAWK · SADECE HAVACILAR İÇİN</small></aside>';
+'<small style="color:var(--muted);padding:0 4px" class="mono">PUSHBACK · SADECE HAVACILAR İÇİN</small></aside>';
 }
 function bottomnav(){
 function it(v,ico){return '<a class="'+(S.view===v?"on":"")+'" data-act="nav" data-v="'+v+'">'+ic(ico,23)+(v==="notifs"&&S.unread?'<span class="badge">'+S.unread+'</span>':"")+'</a>';}
 return '<nav class="bottom">'+it("home","home")+it("explore","radar")+it("notifs","bell")+it("bookmarks","bookmark")+it("profile","user")+'</nav>';
 }
-function brandHead(sub){return '<div class="brandrow">'+LOGO+'<div><span class="wm" style="font-size:26px">SQUAWK</span><small>'+sub+'</small></div></div>';}
+function brandHead(sub){return '<div class="brandrow">'+LOGO+'<div><span class="wm" style="font-size:26px">PUSHBACK</span><small>'+sub+'</small></div></div>';}
 function heroHTML(){
 return '<div class="hero"><div class="bigradar"><div class="bp" style="left:30%;top:28%;animation-delay:.2s"><i>TK1923 FL350</i></div><div class="bp" style="left:64%;top:42%;animation-delay:1.1s"><i>PC2210 FL280</i></div><div class="bp" style="left:44%;top:66%;animation-delay:2s"><i>VF0457 FL120</i></div><div class="bp" style="left:70%;top:72%;animation-delay:.7s"><i>TC-ARC</i></div></div>'+
 '<h2>Frekansta herkes <em>havacı.</em></h2><p>Pilot, kabin, OCC, teknik, ATC ve yer hizmetleri. Takma adınla yaz, rolünle tanın, sektörün nabzını tut.</p></div>';
@@ -1010,7 +1010,7 @@ var ae=document.activeElement,fid=null,fkey=null,pos=null;
 if(ae&&ae!==document.body){
 if(ae.id){fid=ae.id;fkey="id";}else if(ae.getAttribute&&ae.getAttribute("data-f")){fid=ae.getAttribute("data-f");fkey="f";}else if(ae.getAttribute&&ae.getAttribute("data-e")){fid=ae.getAttribute("data-e");fkey="e";}else if(ae.getAttribute&&ae.getAttribute("data-m")){fid=ae.getAttribute("data-m");fkey="m";}
 pos=ae.selectionStart!=null?ae.selectionStart:null;}
-if(S.boot){APP.innerHTML='<div class="loadr" style="min-height:100vh"><div class="radar" style="width:44px;height:44px"></div>SQUAWK</div>';return;}
+if(S.boot){APP.innerHTML='<div class="loadr" style="min-height:100vh"><div class="radar" style="width:44px;height:44px"></div>PUSHBACK</div>';return;}
 if(S.recovery)APP.innerHTML=recoverView()+toastHTML();
 else if(!S.me)APP.innerHTML=authView()+toastHTML();
 else{
