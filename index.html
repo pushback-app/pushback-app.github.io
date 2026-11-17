@@ -323,7 +323,7 @@ if(!PATRX)PATRX=I18N.pat.map(function(p){return {r:new RegExp(p.r),t:p.t};});
 for(var i=0;i<PATRX.length;i++){var mm=core.match(PATRX[i].r);if(mm){var t=PATRX[i].t[LANG]||PATRX[i].t.en;return lead+t.replace(/\{0\}/g,mm[1])+trail;}}
 return s;
 }
-var L10N_SKIP=".text,.bio,.ttl,blockquote,h4,.urow,.job .mono,.prof h2,.prof .h,.post .head b,.post .head .h,.post .top b,textarea,[data-ugc]";
+var L10N_SKIP=".text,.bio,.ttl,blockquote,h4,.urow .g,.job .mono,.prof h2,.prof .h,.post .head b,.post .head .h,.post .top b,textarea,[data-ugc]";
 function L10N(root){
 if(!root||LANG==="tr")return;
 var w=document.createTreeWalker(root,NodeFilter.SHOW_TEXT,null),n,list=[];
@@ -768,12 +768,12 @@ var u={h:p.h,n:p.n,av:p.av,r:p.r},rc=role(p.r).c,img=p.img?'<img class="pimg" sr
 var menu='<button class="more" data-act="menu" data-id="'+p.id+'" title="Seçenekler">'+ic("more",18)+'</button>';
 if(opt.big){
 return '<article class="post big" style="--rc:'+rc+'"><div class="top">'+avatar(u)+'<div style="flex:1;min-width:0"><b data-user="'+esc(p.h)+'" style="cursor:pointer">'+esc(p.n)+'</b>'+vbadge(p.v)+'<br><span style="color:var(--muted)">@'+esc(p.h)+'</span> '+roleChip(p.r)+orgBadge(p.org)+(p.ti?'<div class="ttl">'+esc(ttl(p.ti))+'</div>':"")+'</div>'+menu+'</div>'+
-(p.k==="question"?'<div class="qtag" style="margin-top:10px">? SORU'+(p.tp?' · '+esc(p.tp):"")+(p.ac?' <i class="ok">✓ ÇÖZÜLDÜ</i>':"")+'</div>':"")+'<div class="text" style="margin-top:12px">'+rich(p.t)+'</div>'+img+
+(p.k==="question"?'<div class="qtag" style="margin-top:10px"><span>? SORU</span>'+(p.tp?' · <span>'+esc(p.tp)+'</span>':"")+(p.ac?' <i class="ok">✓ ÇÖZÜLDÜ</i>':"")+'</div>':"")+'<div class="text" style="margin-top:12px">'+rich(p.t)+'</div>'+img+
 '<div class="meta">'+zulu(p.ts)+' · '+fullDate(p.ts)+(p.ed?' '+tx('· düzenlendi'):"")+' · <b style="color:var(--text)">'+p.lc+'</b> beğeni · <b style="color:var(--text)">'+p.rc+'</b> yeniden paylaşım</div>'+acts+'</article>';
 }
 return '<article class="post" style="--rc:'+rc+'" data-act="open" data-id="'+p.id+'">'+avatar(u)+
 '<div class="body"><div class="head"><b data-user="'+esc(p.h)+'">'+esc(p.n)+'</b>'+vbadge(p.v)+'<span class="h">@'+esc(p.h)+'</span>'+roleChip(p.r)+orgBadge(p.org)+'<span class="t" title="'+zulu(p.ts)+'">'+ago(p.ts)+(p.ed?" "+tx("· düz."):"")+'</span>'+menu+'</div>'+
-(p.ti?'<div class="ttl">'+esc(ttl(p.ti))+'</div>':"")+(p.k==="question"?'<div class="qtag">? SORU'+(p.tp?' · '+esc(p.tp):"")+(p.ac?' <i class="ok">✓ ÇÖZÜLDÜ</i>':"")+'</div>':"")+(opt.best?'<div class="qtag best">✓ KABUL EDİLEN CEVAP</div>':"")+
+(p.ti?'<div class="ttl">'+esc(ttl(p.ti))+'</div>':"")+(p.k==="question"?'<div class="qtag"><span>? SORU</span>'+(p.tp?' · <span>'+esc(p.tp)+'</span>':"")+(p.ac?' <i class="ok">✓ ÇÖZÜLDÜ</i>':"")+'</div>':"")+(opt.best?'<div class="qtag best">✓ KABUL EDİLEN CEVAP</div>':"")+
 (p.p&&!opt.hideReplying?'<div class="replying">↩ YANIT</div>':"")+'<div class="text">'+rich(p.t)+'</div>'+img+acts+'</div></article>';
 }
 function composer(id,ph,draft,btn){
