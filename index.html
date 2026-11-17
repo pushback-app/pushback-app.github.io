@@ -21,7 +21,7 @@ html[data-t="light"]{--bg:#f1ede2;--panel:#fbf9f2;--panel2:#ebe6d6;--line:#d6cfb
 html,body{margin:0;background:var(--bg);color:var(--text);font-family:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;font-size:15px;line-height:1.45}
 body{background-image:radial-gradient(circle at 88% -8%,var(--glow) 0,transparent 42%),linear-gradient(var(--grid) 1px,transparent 1px),linear-gradient(90deg,var(--grid) 1px,transparent 1px);background-size:auto,34px 34px,34px 34px;background-attachment:fixed}
 button{font:inherit;color:inherit;cursor:pointer;border:0;background:none}
-input,textarea,select{font:inherit;color:var(--text)}
+input,textarea,select{font:inherit;font-size:16px;color:var(--text)}
 a{color:inherit}
 .i{display:inline-block;vertical-align:middle;flex:0 0 auto}
 .mono{font-family:var(--mono)}
@@ -214,8 +214,15 @@ main{border-left:1px solid var(--line);border-right:1px solid var(--line);min-he
 .acts button{padding:4px 6px}.acts .sq{display:none}
 .chips{flex-wrap:nowrap;overflow-x:auto;gap:6px;padding:8px 12px;scrollbar-width:none;-webkit-overflow-scrolling:touch}.chips::-webkit-scrollbar{display:none}
 .chip{flex:0 0 auto;white-space:nowrap;padding:5px 11px;font-size:11px}
-.composer{gap:10px;padding:10px 12px}.composer .av{width:38px;height:38px}.composer textarea{font-size:16px;min-height:44px}
-.composer .row{margin-top:2px;gap:8px}.qrow{margin-top:4px}
+body{padding-top:env(safe-area-inset-top)}
+main{padding-bottom:calc(76px + env(safe-area-inset-bottom))}.bottom{padding-bottom:env(safe-area-inset-bottom)}
+.composer{gap:10px;padding:10px 12px}.composer .av{width:38px;height:38px}
+.composer>div{display:flex;flex-wrap:wrap;align-items:center;gap:6px}
+.composer textarea{flex:1 1 100%;font-size:16px;min-height:44px;height:48px}
+@supports (field-sizing:content){.composer textarea{field-sizing:content;height:auto;max-height:34vh}}
+.composer .attach{order:1;flex:1 1 100%}.composer .qrow{order:2;margin:0}.composer .row{order:3;flex:1 1 auto;min-width:0;margin:0;gap:8px}
+.composer .cn{display:none}.composer .cn.warn,.composer .cn.over{display:inline}
+.post{gap:10px;padding:12px 12px 10px}.post .av{width:40px;height:40px}.post .head{font-size:13px;gap:5px}
 .topbar h1{font-size:17px;padding:10px 14px}.tabs button{padding:10px;font-size:13px}}
 .ttl{font-size:13px;color:var(--muted);margin-top:1px}
 .bns button.b-dusk,.bns button.b-sky,.bns button.b-radar,.bns button.b-sunrise,.bns button.b-storm,.bns button.b-mint{border-width:2px;border-style:solid;border-color:transparent}
