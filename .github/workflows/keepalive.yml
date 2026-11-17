@@ -15,7 +15,7 @@ jobs:
           K="sb_publishable_ndTUVlOvFaFcHtCOQTClcQ_iWJN3W7H"
           curl -fsS "https://lodaopndsdahfcenrzxj.supabase.co/rest/v1/profiles?select=id&limit=1" -H "apikey: $K" > /dev/null
           curl -fsS "https://lodaopndsdahfcenrzxj.supabase.co/functions/v1/wx?ids=LTFM" -H "apikey: $K" > /dev/null
-          curl -fsS "https://squawk-app.github.io/" > /dev/null
+          curl -fsS "https://pushback-app.github.io/" > /dev/null
       - name: Repo heartbeat (keeps schedules enabled)
         env:
           EVENT: ${{ github.event_name }}
