@@ -1,0 +1,69 @@
+name: news
+on:
+  schedule:
+    - cron: '17 */3 * * *'
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  news:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - name: fetch
+        run: |
+          cat > /tmp/news.mjs <<'EOF'
+          import fs from 'fs';
+          const G='https://news.google.com/rss/search?hl=';
+          const F=[
+            [G+'tr&gl=TR&ceid=TR:tr&q=havac%C4%B1l%C4%B1k','tr',''],
+            [G+'tr&gl=TR&ceid=TR:tr&q=THY+OR+Pegasus+OR+SunExpress+OR+SHGM+OR+D%C4%B0HM','tr',''],
+            ['https://www.havayolu101.com/feed/','tr','Havayolu 101'],
+            [G+'en-US&gl=US&ceid=US:en&q=aviation+OR+airline+OR+airliner','en',''],
+            ['https://simpleflying.com/feed/','en','Simple Flying'],
+            ['https://www.avweb.com/feed/','en','AVweb'],
+            ['https://www.aerotime.aero/feed','en','AeroTime']
+          ];
+          const ent=s=>s.replace(/&nbsp;/g,' ').replace(/&lt;/g,'<').replace(/&gt;/g,'>').replace(/&quot;/g,'"').replace(/&#0?39;|&apos;|&#8217;/g,"'").replace(/&#8211;/g,'-').replace(/&amp;/g,'&');
+          const un=s=>ent(ent((s||'').replace(/<!\[CDATA\[([\s\S]*?)\]\]>/g,'$1').replace(/<[^>]*>/g,' '))).replace(/<[^>]*>/g,' ').replace(/\s+/g,' ').trim();
+          const tag=(x,t)=>{const m=x.match(new RegExp('<'+t+'(?:\\s[^>]*)?>([\\s\\S]*?)</'+t+'>'));return m?m[1]:'';};
+          let out=[];
+          for(const [u,l,def] of F){
+            try{
+              const r=await fetch(u,{headers:{'user-agent':'Mozilla/5.0 PushbackNews'},signal:AbortSignal.timeout(20000)});
+              if(!r.ok){console.log('HTTP',r.status,u);continue;}
+              const xml=await r.text();
+              const items=xml.split(/<item[ >]/).slice(1,16);
+              let n=0;
+              for(const it of items){
+                let t=un(tag(it,'title'));let link=un(tag(it,'link'));
+                if(!link){const m=it.match(/<link[^>]*href="([^"]+)"/);link=m?m[1]:'';}
+                const src=un(tag(it,'source'))||def;
+                if(src&&t.endsWith(' - '+src))t=t.slice(0,-(src.length+3)).trim();
+                let d=un(tag(it,'description'));
+                if(!d||d.toLowerCase().startsWith(t.toLowerCase().slice(0,30)))d='';
+                if(d.length>180)d=d.slice(0,177).replace(/\s+\S*$/,'')+'…';
+                const p=Date.parse(un(tag(it,'pubDate')))||0;
+                if(!t||!link||!p||!/^https?:/.test(link))continue;
+                out.push({t,u:link,s:src||new URL(u).hostname,l,p,d});n++;
+              }
+              console.log('OK',n,u);
+            }catch(e){console.log('ERR',u,String(e).slice(0,80));}
+          }
+          let old=[];try{old=JSON.parse(fs.readFileSync('news.json','utf8'));}catch(e){}
+          const seen=new Set(),cut=Date.now()-14*864e5;
+          const all=out.concat(old).filter(x=>x.p>cut&&x.p<Date.now()+864e5).sort((a,b)=>b.p-a.p).filter(x=>{const k=x.t.toLowerCase().slice(0,60);if(seen.has(k))return false;seen.add(k);return true;});
+          const res=[...all.filter(x=>x.l==='tr').slice(0,40),...all.filter(x=>x.l==='en').slice(0,40)].sort((a,b)=>b.p-a.p);
+          if(res.length)fs.writeFileSync('news.json',JSON.stringify(res));
+          console.log('total',res.length);
+          EOF
+          node /tmp/news.mjs
+      - name: commit
+        run: |
+          git config user.name "github-actions"
+          git config user.email "actions@users.noreply.github.com"
+          git add news.json || true
+          git diff --cached --quiet || (git commit -m "news update" && git push)
