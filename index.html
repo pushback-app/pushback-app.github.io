@@ -290,6 +290,8 @@ main{border-left:1px solid var(--line);border-right:1px solid var(--line)}
 .qcard .pvid{margin-top:8px}
 .attach .vi video{max-height:110px;max-width:200px;border-radius:10px;display:block;background:#000}
 .vup{font-size:13px;color:var(--muted);align-self:center}
+.pimg[src$=".gif"]{image-rendering:auto}
+.pimgs .gifb{display:none}
 </style>
 </head>
 <body>
@@ -305,7 +307,7 @@ var l=document.createElement("link");l.rel="manifest";l.href=URL.createObjectURL
 }catch(e){}};im.src="data:image/svg+xml,"+encodeURIComponent(svg);})();
 </script>
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
-<script src="i18n.js?v=02719d47"></script>
+<script src="i18n.js?v=970ef94d"></script>
 <script>
 var LANG="tr",LOC="tr-TR",LDIR="ltr";
 var TZLANG=(function(){
@@ -504,6 +506,7 @@ im.onerror=function(){URL.revokeObjectURL(url);rej(new Error("Görsel okunamadı
 im.src=url;});
 }
 async function uploadImg(bucket,file,max){
+if(bucket==="post-images"&&file.type==="image/gif"){var gp=S.me.id+"/"+Date.now()+".gif";var gr=await sb.storage.from(bucket).upload(gp,file,{contentType:"image/gif",upsert:false});if(gr.error)throw gr.error;return sb.storage.from(bucket).getPublicUrl(gp).data.publicUrl;}
 var b=await fileToBlob(file,max,0.86);
 var path=S.me.id+"/"+Date.now()+".jpg";
 var r=await sb.storage.from(bucket).upload(path,b,{contentType:"image/jpeg",upsert:false});
@@ -876,7 +879,7 @@ return '<div class="composer">'+avatar({h:S.me.handle,n:S.me.display_name,av:S.m
 '<textarea id="'+id+'" placeholder="'+esc(ph)+'" rows="2">'+esc(draft)+'</textarea>'+
 (id==="draft"&&S.imgs.length?'<div class="attach">'+S.imgs.map(function(m,i){return '<span class="ai"><img src="'+esc(m.url)+'" alt=""><button data-act="rmImg" data-id="'+i+'" title="Kaldır">'+ic("x",14)+'</button></span>';}).join("")+'</div>':"")+
 (id==="draft"&&S.vid?'<div class="attach"><span class="ai vi"><video src="'+esc(S.vid.url)+'" muted playsinline preload="metadata"></video><button data-act="rmVid" title="Kaldır">'+ic("x",14)+'</button></span>'+(S.vprog?'<span class="vup">Video yükleniyor…</span>':"")+'</div>':"")+
-(id==="draft"?'<div class="qrow"><span class="chip '+(S.dk==="question"?"on":"")+'" data-act="dkind">? Soru sor</span>'+(S.dk==="question"?'<select data-m="dtopic" id="dtopic">'+TOPICS.map(function(t){return '<option'+(S.dtopic===t?' selected':'')+'>'+esc(t)+'</option>';}).join("")+'</select>':"")+'</div>':"")+'<div class="row">'+(id==="draft"?'<button class="tool" data-act="pickImg" title="Fotoğraf ekle">'+ic("image",20)+'</button><button class="tool" data-act="pickVid" title="Video ekle">'+ic("video",20)+'</button>':"")+'<span class="sp"></span>'+(id==="draft"?ring(n):"")+'<span class="cn '+cls+'" id="'+id+'Cnt">'+(MAX-n)+'</span>'+
+(id==="draft"?'<div class="qrow"><span class="chip '+(S.dk==="question"?"on":"")+'" data-act="dkind">? Soru sor</span>'+(S.dk==="question"?'<select data-m="dtopic" id="dtopic">'+TOPICS.map(function(t){return '<option'+(S.dtopic===t?' selected':'')+'>'+esc(t)+'</option>';}).join("")+'</select>':"")+'</div>':"")+'<div class="row">'+(id==="draft"?'<button class="tool" data-act="pickImg" title="Fotoğraf veya GIF ekle">'+ic("image",20)+'</button><button class="tool" data-act="pickVid" title="Video ekle">'+ic("video",20)+'</button>':"")+'<span class="sp"></span>'+(id==="draft"?ring(n):"")+'<span class="cn '+cls+'" id="'+id+'Cnt">'+(MAX-n)+'</span>'+
 '<button class="btn sm" id="'+id+'Btn" data-act="'+(id==="reply"?"sendReply":"send")+'" '+(((!draft.trim()&&!(id==="draft"&&(S.imgs.length||S.vid)))||n>MAX||S.busy)?"disabled":"")+'>'+(S.busy?"…":btn)+'</button></div></div></div>';
 }
 function listPosts(arr,empty){
@@ -1342,6 +1345,7 @@ if(el.id==="fa")fl=fl.slice(0,1);
 fl.forEach(function(f){
 if(!/^image\//.test(f.type)){toast("Lütfen bir görsel seç.");return;}
 if(f.size>15*1024*1024){toast("Görsel çok büyük (en fazla 15 MB).");return;}
+if(el.id==="fp"&&f.type==="image/gif"&&f.size>10*1024*1024){toast("GIF çok büyük (en fazla 10 MB).");return;}
 var url=URL.createObjectURL(f);
 if(el.id==="fp"){if(S.imgs.length<4)S.imgs.push({file:f,url:url});else toast("En fazla 4 fotoğraf ekleyebilirsin.");}else{S.ef.file=f;S.ef.prev=url;}
 });
