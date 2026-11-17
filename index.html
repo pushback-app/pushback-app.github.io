@@ -5,6 +5,12 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Squawk – Havacıların Frekansı</title>
 <meta name="theme-color" content="#070b14">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%27%20viewBox%3D%270%200%20512%20512%27%3E%3Crect%20width%3D%27512%27%20height%3D%27512%27%20fill%3D%27%23070b14%27%2F%3E%3Cg%20fill%3D%27none%27%20stroke%3D%27%23ffb020%27%3E%3Ccircle%20cx%3D%27256%27%20cy%3D%27256%27%20r%3D%27170%27%20stroke-width%3D%2714%27%2F%3E%3Ccircle%20cx%3D%27256%27%20cy%3D%27256%27%20r%3D%27100%27%20stroke-opacity%3D%27.55%27%20stroke-width%3D%2710%27%2F%3E%3C%2Fg%3E%3Cpath%20d%3D%27M256%20256V86A170%20170%200%200%201%20403%20171Z%27%20fill%3D%27%23ffb020%27%20fill-opacity%3D%27.45%27%2F%3E%3Cpath%20d%3D%27M256%20256V86%27%20stroke%3D%27%23ffb020%27%20stroke-width%3D%2714%27%20stroke-linecap%3D%27round%27%2F%3E%3Ccircle%20cx%3D%27330%27%20cy%3D%27330%27%20r%3D%2716%27%20fill%3D%27%23ffb020%27%2F%3E%3Ccircle%20cx%3D%27256%27%20cy%3D%27256%27%20r%3D%2712%27%20fill%3D%27%23ffb020%27%2F%3E%3C%2Fsvg%3E">
+<link rel="apple-touch-icon" id="ati" href="data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%27%20viewBox%3D%270%200%20512%20512%27%3E%3Crect%20width%3D%27512%27%20height%3D%27512%27%20fill%3D%27%23070b14%27%2F%3E%3Cg%20fill%3D%27none%27%20stroke%3D%27%23ffb020%27%3E%3Ccircle%20cx%3D%27256%27%20cy%3D%27256%27%20r%3D%27170%27%20stroke-width%3D%2714%27%2F%3E%3Ccircle%20cx%3D%27256%27%20cy%3D%27256%27%20r%3D%27100%27%20stroke-opacity%3D%27.55%27%20stroke-width%3D%2710%27%2F%3E%3C%2Fg%3E%3Cpath%20d%3D%27M256%20256V86A170%20170%200%200%201%20403%20171Z%27%20fill%3D%27%23ffb020%27%20fill-opacity%3D%27.45%27%2F%3E%3Cpath%20d%3D%27M256%20256V86%27%20stroke%3D%27%23ffb020%27%20stroke-width%3D%2714%27%20stroke-linecap%3D%27round%27%2F%3E%3Ccircle%20cx%3D%27330%27%20cy%3D%27330%27%20r%3D%2716%27%20fill%3D%27%23ffb020%27%2F%3E%3Ccircle%20cx%3D%27256%27%20cy%3D%27256%27%20r%3D%2712%27%20fill%3D%27%23ffb020%27%2F%3E%3C%2Fsvg%3E">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="Squawk">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <meta name="description" content="Squawk: pilot, kabin, OCC, teknik, ATC ve yer hizmetleri için havacılara özel sosyal ağ.">
 <style>
 :root{--ac:#ffb020;--ac-ink:#14100a;--red:#ff5c7a;--green:#3ddc97;--blue:#5aa9ff;
@@ -214,6 +220,16 @@ main{border-left:1px solid var(--line);border-right:1px solid var(--line);min-he
 </head>
 <body>
 <div id="app"></div>
+<script>
+(function(){var svg="<svg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 512 512\'><rect width=\'512\' height=\'512\' fill=\'#070b14\'/><g fill=\'none\' stroke=\'#ffb020\'><circle cx=\'256\' cy=\'256\' r=\'170\' stroke-width=\'14\'/><circle cx=\'256\' cy=\'256\' r=\'100\' stroke-opacity=\'.55\' stroke-width=\'10\'/></g><path d=\'M256 256V86A170 170 0 0 1 403 171Z\' fill=\'#ffb020\' fill-opacity=\'.45\'/><path d=\'M256 256V86\' stroke=\'#ffb020\' stroke-width=\'14\' stroke-linecap=\'round\'/><circle cx=\'330\' cy=\'330\' r=\'16\' fill=\'#ffb020\'/><circle cx=\'256\' cy=\'256\' r=\'12\' fill=\'#ffb020\'/></svg>";
+var im=new Image();im.onload=function(){try{
+function png(n){var c=document.createElement("canvas");c.width=c.height=n;c.getContext("2d").drawImage(im,0,0,n,n);return c.toDataURL("image/png");}
+var p180=png(180),p192=png(192),p512=png(512);
+var a=document.getElementById("ati");if(a)a.href=p180;
+var m={name:"Squawk",short_name:"Squawk",description:"Havac\u0131lara \u00f6zel sosyal a\u011f",start_url:location.origin+location.pathname,scope:location.origin+"/",display:"standalone",background_color:"#070b14",theme_color:"#070b14",icons:[{src:p192,sizes:"192x192",type:"image/png"},{src:p512,sizes:"512x512",type:"image/png",purpose:"any"}]};
+var l=document.createElement("link");l.rel="manifest";l.href=URL.createObjectURL(new Blob([JSON.stringify(m)],{type:"application/manifest+json"}));document.head.appendChild(l);
+}catch(e){}};im.src="data:image/svg+xml,"+encodeURIComponent(svg);})();
+</script>
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
 <script>
 (function(){
@@ -248,7 +264,7 @@ var REASONS=[["hakaret","Hakaret / taciz"],["sir","Sır / gizli bilgi paylaşım
 function lsGet(k,d){try{var v=localStorage.getItem(k);return v==null?d:v;}catch(e){return d;}}
 function lsSet(k,v){try{localStorage.setItem(k,v);}catch(e){}}
 var S={
-view:"home",param:null,tab:"all",filter:"all",q:"",draft:"",replyDraft:"",stack:[],ptab:"posts",
+phone:"",view:"home",param:null,tab:"all",filter:"all",q:"",draft:"",replyDraft:"",stack:[],ptab:"posts",
 mode:"login",authErr:"",authInfo:"",form:{},show:{},busy:false,boot:true,recovery:false,
 me:null,email:"",posts:[],replies:[],parent:null,post:null,prof:null,pstats:null,pinned:null,notifs:[],people:[],users:[],
 trend:[],sugg:[],unread:0,follows:{},blk:{},blkList:[],loading:false,toast:"",tok:0,ch:null,
@@ -388,7 +404,7 @@ var rn=await sb.from("notifications").select("id,type,read,created_at,post_id,ac
 if(tok!==S.tok)return;S.notifs=rn.data||[];
 if(S.notifs.some(function(n){return !n.read;}))sb.from("notifications").update({read:true}).eq("user_id",S.me.id).eq("read",false).then(function(){S.unread=0;render();});
 }else if(v==="settings"){
-var rv=await sb.from("verification_requests").select("*").eq("user_id",S.me.id).order("created_at",{ascending:false}).limit(1);if(tok!==S.tok)return;S.verif=(rv.data&&rv.data[0])||null;
+var rv=await sb.from("verification_requests").select("*").eq("user_id",S.me.id).order("created_at",{ascending:false}).limit(1);if(tok!==S.tok)return;S.verif=(rv.data&&rv.data[0])||null;var rph=await sb.from("private_contacts").select("phone").eq("user_id",S.me.id).maybeSingle();if(tok!==S.tok)return;S.form.cphone=(rph.data&&rph.data.phone)||"";S.phone=S.form.cphone;
 }else if(v==="admin"&&S.me.is_admin){await loadAdmin();}
 await loadSide();
 }catch(e){console.error(e);if(tok===S.tok)S.toast="Veri yüklenemedi. Bağlantını kontrol et.";}
@@ -414,7 +430,20 @@ var refreshTimer=null;
 function scheduleRefresh(){clearTimeout(refreshTimer);refreshTimer=setTimeout(function(){loadView(true);},700);}
 function startRealtime(){if(S.ch||!S.me)return;S.ch=sb.channel("squawk-live").on("postgres_changes",{event:"INSERT",schema:"public",table:"posts"},scheduleRefresh).on("postgres_changes",{event:"INSERT",schema:"public",table:"notifications",filter:"user_id=eq."+S.me.id},scheduleRefresh).subscribe();}
 function pwScore(p){var s=0;if(!p)return 0;if(p.length>=6)s++;if(p.length>=10)s++;if(/[A-Z]/.test(p)&&/[a-z]/.test(p))s++;if(/\d/.test(p)&&/[^A-Za-z0-9]/.test(p))s++;else if(/\d/.test(p)&&p.length>=8)s++;return Math.min(4,s);}
-async function doLogin(){var f=S.form;if(!f.email||!f.password){S.authErr="E-posta ve şifreni gir.";render();return;}S.busy=true;S.authErr="";render();var r=await sb.auth.signInWithPassword({email:f.email.trim(),password:f.password});S.busy=false;if(r.error){S.authErr=errText(r.error);render();}}
+function normPhone(raw){var d=String(raw||"").replace(/\D/g,"");if(d.indexOf("00")===0)d=d.slice(2);if(d.length===11&&d.charAt(0)==="0")d="90"+d.slice(1);else if(d.length===10&&d.charAt(0)==="5")d="90"+d;return d;}
+async function doLogin(){
+var f=S.form,id=(f.email||"").trim();
+if(!id||!f.password){S.authErr="Kullanıcı adı, e-posta veya telefon ile şifreni gir.";render();return;}
+S.busy=true;S.authErr="";render();
+if(id.indexOf("@")>0){var r=await sb.auth.signInWithPassword({email:id,password:f.password});S.busy=false;if(r.error){S.authErr=errText(r.error);render();}return;}
+try{
+var x=await fetch(SB_URL+"/functions/v1/login",{method:"POST",headers:{"Content-Type":"application/json",apikey:SB_KEY},body:JSON.stringify({id:id,password:f.password})});
+var j=await x.json();
+if(!x.ok||!j.access_token){S.busy=false;S.authErr=j.error||"Giriş bilgileri hatalı.";render();return;}
+var s2=await sb.auth.setSession({access_token:j.access_token,refresh_token:j.refresh_token});
+S.busy=false;if(s2.error){S.authErr=errText(s2.error);render();}
+}catch(e){S.busy=false;S.authErr="Bağlantı hatası. Tekrar dene.";render();}
+}
 async function doRegister(){
 var f=S.form,h=(f.handle||"").trim().replace(/^@/,""),n=(f.name||"").trim(),err="";
 if(!f.email)err="E-posta gir.";
@@ -422,12 +451,14 @@ else if(!f.password||f.password.length<6)err="Şifre en az 6 karakter olmalı.";
 else if(f.password!==f.password2)err="Şifreler eşleşmiyor.";
 else if(!/^[A-Za-z0-9_]{3,20}$/.test(h))err="Kullanıcı adı 3-20 karakter olmalı (harf, rakam, alt çizgi).";
 else if(n.length<2)err="Görünen ad en az 2 karakter olmalı.";
+else if((f.phone||"").trim()&&!/^[0-9]{8,15}$/.test(normPhone(f.phone)))err="Telefon numarası geçersiz. Örn. 0532 123 45 67";
 else if(!f.agree)err="Kullanım kurallarını kabul etmelisin.";
 if(err){S.authErr=err;render();return;}
 S.busy=true;S.authErr="";S.authInfo="";render();
 var r=await sb.auth.signUp({email:f.email.trim(),password:f.password,options:{data:{handle:h,display_name:n,role:f.role||"pilot",bio:(f.bio||"").trim().slice(0,120)}}});
 S.busy=false;
 if(r.error){S.authErr=errText(r.error);render();return;}
+if(r.data.session&&r.data.user&&(f.phone||"").trim()){var pr=await sb.from("private_contacts").insert({user_id:r.data.user.id,phone:normPhone(f.phone)});if(pr.error)setTimeout(function(){toast(pr.error.code==="23505"?"Bu telefon numarası başka bir hesapta kayıtlı, eklenmedi.":"Telefon kaydedilemedi.");},800);}
 if(!r.data.session){S.authInfo="Kaydın alındı. E-postana gelen bağlantıyla hesabını onayla, sonra giriş yap.";S.mode="login";render();}
 }
 async function doLogout(){await sb.auth.signOut();}
@@ -443,6 +474,14 @@ S.form.newpw="";S.form.newpw2="";S.recovery=false;S.authInfo="";
 try{history.replaceState(null,"",location.pathname);}catch(e){}
 if(S.me){S.view="home";S.param=null;S.stack=[];loadView();}else render();
 toast("Şifren güncellendi.");
+}
+async function savePhone(){
+var raw=(S.form.cphone||"").trim(),p=normPhone(raw),r;
+if(!raw){r=await sb.from("private_contacts").delete().eq("user_id",S.me.id);if(r.error){toast("Kaydedilemedi.");return;}S.phone="";S.form.cphone="";toast("Telefon kaldırıldı.");render();return;}
+if(!/^[0-9]{8,15}$/.test(p)){toast("Telefon numarası geçersiz. Örn. 0532 123 45 67");return;}
+r=await sb.from("private_contacts").upsert({user_id:S.me.id,phone:p});
+if(r.error){toast(r.error.code==="23505"?"Bu numara başka bir hesapta kayıtlı.":"Kaydedilemedi.");return;}
+S.phone=p;S.form.cphone=p;toast("Telefon kaydedildi. Artık bununla da giriş yapabilirsin.");render();
 }
 async function changePw(){
 var a=S.form.cpw||"",b=S.form.cpw2||"";
@@ -712,7 +751,7 @@ return '<div class="topbar"><h1>Ayarlar <small>Panel</small></h1></div>'+
 '<div class="srow"><div class="g"><b>Gizli hesap</b><small>Squawk\'larını sadece onayladığın takipçiler görür.</small></div>'+sw(m.is_private,"setPrivate",m.is_private?"0":"1")+'</div>'+
 '<div class="srow"><div class="g"><b>Takipçi sayılarını gizle</b><small>Takipçi / takip listesi başkalarına kapalı olur.</small></div>'+sw(m.hide_stats,"setHide",m.hide_stats?"0":"1")+'</div></div>'+
 '<div class="card"><h3>Engellenenler ve sessizdekiler</h3><p class="sub">Bir squawk\'ın ⋯ menüsünden ekleyebilirsin.</p>'+bl+'</div>'+
-'<div class="card"><h3>Hesap</h3><p class="sub">'+esc(S.email)+'</p>'+
+'<div class="card"><h3>Hesap</h3><p class="sub">'+esc(S.email)+'</p>'+'<label class="field"><span>Cep telefonu (giriş için, kimse görmez)</span><input data-f="cphone" type="tel" placeholder="05xx xxx xx xx" value="'+esc(f.cphone||"")+'" autocomplete="tel"></label><button class="btn sm ghost" data-act="savePhone" style="margin-bottom:16px">Telefonu kaydet</button>'+
 pwField("cpw","Yeni şifre","En az 6 karakter","new-password",meter(f.cpw))+pwField("cpw2","Yeni şifre (tekrar)","Şifreyi tekrar gir","new-password",matchHint(f.cpw,f.cpw2))+
 '<button class="btn sm" data-act="changePw">Şifreyi güncelle</button></div>'+
 '<div class="card"><h3>Onaylı hesap</h3><p class="sub">Gerçek bir havacı olduğunu doğrula, profilinde mavi onay işareti görünsün.</p>'+verifBox+'</div>'+
@@ -828,8 +867,8 @@ var opts=ROLES.map(function(r){return '<option value="'+r.k+'"'+((f.role||"pilot
 function fld(l,n,t,ph,ex){return '<label class="field"><span>'+l+'</span><input data-f="'+n+'" type="'+t+'" placeholder="'+ph+'" value="'+esc(f[n]||"")+'" '+(ex||"")+'></label>';}
 return '<div class="auth">'+heroHTML()+'<div class="auth-card">'+brandHead("Havacıların frekansı")+
 '<div class="tabs" style="margin:18px 0 8px"><button class="'+(!reg?"on":"")+'" data-act="mode" data-v="login">Giriş</button><button class="'+(reg?"on":"")+'" data-act="mode" data-v="register">Kayıt Ol</button></div>'+
-(reg?'<p>Sadece havacılara özel. Takma adınla yaz, rolünle tanın.</p>':'<p>Hesabınla giriş yap.</p>')+
-fld("E-posta","email","email","ornek@eposta.com",'autocomplete="email"')+
+(reg?'<p>Sadece havacılara özel. Takma adınla yaz, rolünle tanın.</p>':'<p>Kullanıcı adı, e-posta veya telefon numaranla giriş yap.</p>')+
+(reg?fld("E-posta","email","email","ornek@eposta.com",'autocomplete="email"')+fld("Cep telefonu (isteğe bağlı, giriş için)","phone","tel","05xx xxx xx xx",'autocomplete="tel"'):fld("Kullanıcı adı, e-posta veya telefon","email","text","kule_kulagi · ornek@eposta.com · 05xx…",'autocomplete="username" autocapitalize="none" spellcheck="false"'))+
 pwField("password","Şifre","En az 6 karakter",reg?"new-password":"current-password",reg?meter(f.password):"")+
 (reg?pwField("password2","Şifre (tekrar)","Şifreyi tekrar gir","new-password",matchHint(f.password,f.password2))+
 fld("Kullanıcı adı (takma ad)","handle","text","örn. kule_kulagi",'maxlength="20" autocomplete="off"')+fld("Görünen ad","name","text","örn. Kule Kulağı",'maxlength="30" autocomplete="off"')+
@@ -913,7 +952,7 @@ case "theme":S.theme=v;lsSet("sq_theme",v);applyTheme();render();break;
 case "accent":S.accent=v;lsSet("sq_accent",v);applyTheme();render();break;
 case "setPrivate":saveSetting("is_private",v==="1");break;
 case "setHide":saveSetting("hide_stats",v==="1");break;
-case "changePw":changePw();break;
+case "changePw":changePw();break;case "savePhone":savePhone();break;
 case "reqVerify":reqVerify();break;
 case "reqOk":answerReq(id,true);break;case "reqNo":answerReq(id,false);break;
 case "ptab":S.ptab=v;loadView();break;
@@ -974,675 +1013,6 @@ else if(ev==="INITIAL_SESSION"&&!session)setSession(null);
 },0);
 });
 applyTheme();
-render();
-})();
-</script>
-</body>
-</html>
-<!DOCTYPE html>
-<html lang="tr">
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Squawk – Havacıların Frekansı</title>
-<meta name="theme-color" content="#0a1020">
-<style>
-:root{
---bg:#0a1020;--panel:#111a2e;--panel2:#16213a;--line:#223052;
---text:#e8edf7;--muted:#8d9bb8;--amber:#ffb020;--amber2:#ffcb5c;--green:#3ddc97;--red:#ff5c7a;--blue:#5aa9ff;
-}
-*{box-sizing:border-box}
-html,body{margin:0;background:var(--bg);color:var(--text);font-family:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;font-size:15px;line-height:1.45}
-button{font:inherit;color:inherit;cursor:pointer;border:0;background:none}
-input,textarea,select{font:inherit;color:var(--text)}
-#app{max-width:1180px;margin:0 auto;min-height:100vh}
-.auth{min-height:100vh;display:flex;align-items:center;justify-content:center;padding:24px}
-.auth-card{width:100%;max-width:420px;background:var(--panel);border:1px solid var(--line);border-radius:18px;padding:28px}
-.brand{display:flex;align-items:center;gap:10px;font-weight:800;font-size:28px;letter-spacing:.5px}
-.brand small{display:block;font-weight:500;font-size:13px;color:var(--muted);letter-spacing:0}
-.auth h2{margin:20px 0 4px;font-size:18px}
-.auth p{margin:0 0 16px;color:var(--muted);font-size:13px}
-.field{display:block;margin-bottom:12px}
-.field span{display:block;font-size:12px;color:var(--muted);margin-bottom:4px}
-.field input,.field select,.field textarea{width:100%;background:var(--panel2);border:1px solid var(--line);border-radius:10px;padding:10px 12px;outline:none}
-.field input:focus,.field select:focus,.field textarea:focus{border-color:var(--amber)}
-.btn{background:var(--amber);color:#1b1300;font-weight:700;border-radius:999px;padding:10px 18px}
-.btn:hover{background:var(--amber2)}
-.btn.ghost{background:transparent;color:var(--text);border:1px solid var(--line);font-weight:600}
-.btn.ghost:hover{background:var(--panel2)}
-.btn.sm{padding:6px 14px;font-size:13px}
-.btn:disabled{opacity:.4;cursor:default}
-.btn.full{width:100%}
-.err{color:var(--red);font-size:13px;min-height:18px;margin-bottom:6px}
-.note{font-size:12px;color:var(--muted);margin-top:14px;text-align:center}
-.shell{display:grid;grid-template-columns:240px minmax(0,600px) 320px;gap:0;justify-content:center}
-.side{position:sticky;top:0;height:100vh;padding:14px 10px;display:flex;flex-direction:column;gap:4px}
-.side .brand{padding:6px 12px 14px;font-size:24px}
-.nav a{display:flex;align-items:center;gap:14px;padding:11px 14px;border-radius:999px;font-size:17px;cursor:pointer;color:var(--text)}
-.nav a:hover{background:var(--panel)}
-.nav a.on{font-weight:700;color:var(--amber)}
-.nav .ico{width:24px;text-align:center;font-size:19px}
-.badge{background:var(--amber);color:#1b1300;border-radius:999px;font-size:11px;font-weight:800;padding:1px 7px;margin-left:auto}
-.side .btn{margin:10px 6px;padding:13px}
-.me-chip{margin-top:auto;display:flex;align-items:center;gap:10px;padding:10px;border-radius:14px;cursor:pointer}
-.me-chip:hover{background:var(--panel)}
-.me-chip b{display:block;font-size:14px}
-.me-chip small{color:var(--muted)}
-main{border-left:1px solid var(--line);border-right:1px solid var(--line);min-height:100vh;min-width:0}
-.right{padding:14px 16px;display:flex;flex-direction:column;gap:14px;position:sticky;top:0;height:100vh;overflow:auto}
-.box{background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:14px}
-.box h3{margin:0 0 10px;font-size:16px}
-.trend{display:block;padding:8px 0;cursor:pointer;border-top:1px solid var(--line)}
-.trend:first-of-type{border-top:0}
-.trend b{display:block;color:var(--amber)}
-.trend small{color:var(--muted)}
-.suggest{display:flex;align-items:center;gap:10px;padding:8px 0;border-top:1px solid var(--line)}
-.suggest:first-of-type{border-top:0}
-.suggest .grow{flex:1;min-width:0;cursor:pointer}
-.suggest b{display:block;font-size:14px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.suggest small{color:var(--muted)}
-.topbar{position:sticky;top:0;z-index:5;background:rgba(10,16,32,.88);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
-.topbar h1{margin:0;font-size:19px;padding:14px 16px}
-.topbar .back{display:flex;align-items:center;gap:12px}
-.topbar .back button{font-size:20px;padding:12px 4px 12px 16px;color:var(--amber)}
-.tabs{display:flex}
-.tabs button{flex:1;padding:12px;color:var(--muted);font-weight:600;border-bottom:3px solid transparent}
-.tabs button.on{color:var(--text);border-bottom-color:var(--amber)}
-.tabs button:hover{background:var(--panel)}
-.composer{display:flex;gap:12px;padding:14px 16px;border-bottom:1px solid var(--line)}
-.composer textarea{flex:1;background:transparent;border:0;outline:none;resize:none;font-size:18px;min-height:64px}
-.composer .row{display:flex;align-items:center;justify-content:space-between;margin-top:6px}
-.count{font-size:13px;color:var(--muted)}
-.count.warn{color:var(--amber)}.count.over{color:var(--red)}
-.hint{font-size:12px;color:var(--muted)}
-.av{flex:0 0 auto;width:42px;height:42px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:800;color:#0a1020;font-size:15px}
-.av.lg{width:78px;height:78px;font-size:28px;border:4px solid var(--bg)}
-.av.sm{width:34px;height:34px;font-size:13px}
-.post{display:flex;gap:12px;padding:14px 16px;border-bottom:1px solid var(--line);cursor:pointer}
-.post:hover{background:rgba(255,255,255,.015)}
-.post .body{flex:1;min-width:0}
-.post .head{display:flex;flex-wrap:wrap;align-items:center;gap:6px;font-size:14px}
-.post .head b{font-size:15px}
-.post .head .h,.post .head .t{color:var(--muted)}
-.role{font-size:11px;font-weight:700;padding:2px 8px;border-radius:999px;border:1px solid currentColor;white-space:nowrap}
-.text{margin:3px 0 8px;white-space:pre-wrap;word-wrap:break-word;overflow-wrap:anywhere;font-size:15.5px}
-.tag,.mention{color:var(--blue);cursor:pointer}
-.tag:hover,.mention:hover{text-decoration:underline}
-.replying{font-size:13px;color:var(--muted);margin-top:2px}
-.acts{display:flex;gap:6px;max-width:420px}
-.acts button{flex:1;display:flex;align-items:center;gap:6px;color:var(--muted);padding:4px 6px;border-radius:999px;font-size:14px;justify-content:flex-start}
-.acts button:hover{background:var(--panel2)}
-.acts .like.on{color:var(--red)}
-.acts .rp.on{color:var(--green)}
-.post.big{cursor:default;flex-direction:column}
-.post.big .text{font-size:19px}
-.post.big .meta{color:var(--muted);font-size:13px;padding:10px 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line);margin-bottom:6px}
-.post.big .top{display:flex;gap:12px;align-items:center}
-.banner{height:110px;background:linear-gradient(135deg,#1b2b52,#0f1b36 55%,#3a2a08)}
-.prof{padding:0 16px 14px;border-bottom:1px solid var(--line)}
-.prof .row{display:flex;justify-content:space-between;align-items:flex-end;margin-top:-40px}
-.prof h2{margin:10px 0 0;font-size:20px}
-.prof .h{color:var(--muted)}
-.prof .bio{margin:8px 0}
-.prof .stats{display:flex;gap:18px;color:var(--muted);font-size:14px}
-.prof .stats b{color:var(--text)}
-.chips{display:flex;gap:8px;flex-wrap:wrap;padding:12px 16px;border-bottom:1px solid var(--line)}
-.chip{padding:6px 13px;border-radius:999px;border:1px solid var(--line);font-size:13px;color:var(--muted)}
-.chip.on{background:var(--amber);color:#1b1300;border-color:var(--amber);font-weight:700}
-.search{padding:12px 16px;border-bottom:1px solid var(--line)}
-.search input{width:100%;background:var(--panel);border:1px solid var(--line);border-radius:999px;padding:10px 16px;outline:none}
-.search input:focus{border-color:var(--amber)}
-.empty{padding:40px 20px;text-align:center;color:var(--muted)}
-.notif{display:flex;gap:12px;padding:14px 16px;border-bottom:1px solid var(--line);cursor:pointer}
-.notif.new{background:rgba(255,176,32,.06)}
-.notif .ic{font-size:20px;width:30px;text-align:center}
-.notif p{margin:2px 0 0;color:var(--muted);font-size:14px}
-.demo{background:#2a2108;color:var(--amber2);font-size:12px;text-align:center;padding:6px 10px}
-.bottom{display:none}
-@media (max-width:1020px){
-.shell{grid-template-columns:72px minmax(0,1fr)}
-.right{display:none}
-.side .lbl,.me-chip div{display:none}
-.side .brand span.w{display:none}
-.nav a{justify-content:center;padding:12px}
-.badge{position:absolute;margin:-18px 0 0 18px}
-.side .btn{padding:10px 0;font-size:0}
-.side .btn:before{content:"✎";font-size:18px}
-}
-@media (max-width:700px){
-.shell{display:block}
-.side{display:none}
-main{border:0;padding-bottom:64px}
-.bottom{display:flex;position:fixed;left:0;right:0;bottom:0;background:var(--panel);border-top:1px solid var(--line);z-index:10}
-.bottom a{flex:1;text-align:center;padding:12px 0;font-size:21px;position:relative;cursor:pointer;color:var(--muted)}
-.bottom a.on{color:var(--amber)}
-.bottom .badge{position:absolute;top:6px;margin:0 0 0 4px;font-size:10px}
-}
-.vb{display:inline-flex;align-items:center;justify-content:center;width:16px;height:16px;border-radius:50%;background:var(--blue);color:#06101f;font-size:10px;font-weight:900;margin-left:2px}
-.okmsg{background:rgba(61,220,151,.12);color:var(--green);border-radius:10px;padding:10px 12px;font-size:13px;margin-bottom:10px}
-.toast{position:fixed;left:50%;bottom:84px;transform:translateX(-50%);background:var(--panel2);border:1px solid var(--line);color:var(--text);padding:10px 18px;border-radius:999px;z-index:50;font-size:14px;box-shadow:0 6px 24px rgba(0,0,0,.4)}
-.auth .tabs button{padding:10px}
-</style>
-</head>
-<body>
-<div id="app"></div>
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
-<script>
-(function(){
-"use strict";
-var SB_URL="https://lodaopndsdahfcenrzxj.supabase.co";
-var SB_KEY="sb_publishable_ndTUVlOvFaFcHtCOQTClcQ_iWJN3W7H";
-var MAX=280;
-var APP=document.getElementById("app");
-if(!window.supabase){
-APP.innerHTML='<div class="empty" style="padding:60px 20px">Bağlantı kütüphanesi yüklenemedi. İnternet bağlantını kontrol edip sayfayı yenile.</div>';
-return;
-}
-var sb=window.supabase.createClient(SB_URL,SB_KEY,{auth:{persistSession:true,autoRefreshToken:true}});
-var ROLES=[
-{k:"pilot",n:"Pilot",c:"#5aa9ff"},
-{k:"kabin",n:"Kabin Ekibi",c:"#ff8fb3"},
-{k:"occ",n:"OCC / Dispeçer",c:"#ffb020"},
-{k:"teknik",n:"Teknisyen",c:"#3ddc97"},
-{k:"atc",n:"ATC",c:"#c39bff"},
-{k:"yer",n:"Yer Hizmetleri",c:"#ff9f5a"},
-{k:"ogrenci",n:"Öğrenci Pilot",c:"#7fe0e6"}
-];
-function role(k){for(var i=0;i<ROLES.length;i++)if(ROLES[i].k===k)return ROLES[i];return ROLES[0];}
-var S={
-view:"home",param:null,tab:"all",filter:"all",q:"",draft:"",replyDraft:"",stack:[],
-mode:"login",authErr:"",authInfo:"",form:{},busy:false,boot:true,recovery:false,
-me:null,posts:[],replies:[],parent:null,post:null,prof:null,pstats:null,notifs:[],
-trend:[],sugg:[],unread:0,follows:{},loading:false,toast:"",tok:0,ch:null
-};
-function esc(s){return String(s==null?"":s).replace(/[&<>"']/g,function(c){return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c];});}
-function hash(s){var h=0;s=String(s);for(var i=0;i<s.length;i++)h=(h*31+s.charCodeAt(i))|0;return Math.abs(h);}
-function ago(ts){
-var s=Math.floor((Date.now()-ts)/1000);
-if(s<60)return "şimdi";
-var m=Math.floor(s/60);if(m<60)return m+" dk";
-var h=Math.floor(m/60);if(h<24)return h+" sa";
-var d=Math.floor(h/24);if(d<7)return d+" g";
-return new Date(ts).toLocaleDateString("tr-TR",{day:"numeric",month:"short"});
-}
-function fullDate(ts){return new Date(ts).toLocaleString("tr-TR",{hour:"2-digit",minute:"2-digit",day:"numeric",month:"long",year:"numeric"});}
-var TAGCH="A-Za-z0-9_çğıöşüÇĞİÖŞÜ";
-function rich(text){
-var t=esc(text);
-t=t.replace(new RegExp("#(["+TAGCH+"]+)","g"),'<span class="tag" data-tag="$1">#$1</span>');
-t=t.replace(new RegExp("@(["+TAGCH+"]+)","g"),'<span class="mention" data-user="$1">@$1</span>');
-return t;
-}
-function toast(msg){S.toast=msg;render();setTimeout(function(){if(S.toast===msg){S.toast="";render();}},3500);}
-function P(r){
-return {id:r.id,p:r.parent_id,t:r.body,ts:new Date(r.created_at).getTime(),h:r.handle,n:r.display_name,r:r.role,v:!!r.is_verified,
-lc:Number(r.like_count)||0,rc:Number(r.repost_count)||0,cc:Number(r.reply_count)||0,lk:!!r.liked_by_me,rp:!!r.reposted_by_me};
-}
-function allPostRefs(){
-var a=[].concat(S.posts,S.replies);
-if(S.post)a.push(S.post);
-if(S.parent)a.push(S.parent);
-return a;
-}
-function errText(e){
-var m=(e&&e.message)||"Bilinmeyen hata";
-if(/Invalid login credentials/i.test(m))return "E-posta veya şifre hatalı.";
-if(/already registered|already been registered/i.test(m))return "Bu e-posta ile zaten bir hesap var. Giriş yapmayı dene.";
-if(/Database error/i.test(m))return "Kayıt oluşturulamadı: kullanıcı adı alınmış olabilir ya da bilgiler geçersiz.";
-if(/Password should be/i.test(m))return "Şifre en az 6 karakter olmalı.";
-if(/different from the old password/i.test(m))return "Yeni şifre eskisinden farklı olmalı.";
-if(/rate limit/i.test(m))return "Çok fazla deneme yapıldı. Biraz bekleyip tekrar dene.";
-if(/valid email|invalid email/i.test(m))return "Geçerli bir e-posta gir.";
-return m;
-}
-async function loadSide(){
-if(!S.me)return;
-var res=await Promise.all([
-sb.from("trending_tags").select("*"),
-sb.from("notifications").select("id",{count:"exact",head:true}).eq("user_id",S.me.id).eq("read",false),
-sb.from("follows").select("followee:profiles!follows_followee_id_fkey(handle)").eq("follower_id",S.me.id),
-sb.from("profiles").select("handle,display_name,role").neq("id",S.me.id).order("created_at",{ascending:false}).limit(30)
-]);
-S.trend=(res[0].data||[]).slice(0,6);
-S.unread=res[1].count||0;
-S.follows={};
-(res[2].data||[]).forEach(function(f){if(f.followee)S.follows[f.followee.handle]=true;});
-S.sugg=(res[3].data||[]).filter(function(x){return !S.follows[x.handle];}).slice(0,4);
-}
-async function loadView(silent){
-if(!S.me)return;
-var tok=++S.tok;
-if(!silent){S.loading=true;render();}
-try{
-if(S.view==="home"||S.view==="explore"){
-var q=sb.from("post_feed").select("*").is("parent_id",null).order("created_at",{ascending:false}).limit(60);
-if(S.view==="home"&&S.tab==="follow"){
-var hs=Object.keys(S.follows);hs.push(S.me.handle);
-q=q.in("handle",hs);
-}
-if(S.view==="explore"){
-if(S.filter!=="all")q=q.eq("role",S.filter);
-var term=S.q.trim().replace(/[,()%*]/g," ");
-if(term)q=q.or("body.ilike.%"+term+"%,handle.ilike.%"+term+"%,display_name.ilike.%"+term+"%");
-}
-var r=await q;if(tok!==S.tok)return;
-S.posts=(r.data||[]).map(P);
-} else if(S.view==="thread"){
-var r1=await sb.from("post_feed").select("*").eq("id",S.param).maybeSingle();
-if(tok!==S.tok)return;
-S.post=r1.data?P(r1.data):null;S.parent=null;S.replies=[];
-if(S.post){
-var jobs=[sb.from("post_feed").select("*").eq("parent_id",S.post.id).order("created_at",{ascending:true})];
-if(S.post.p)jobs.push(sb.from("post_feed").select("*").eq("id",S.post.p).maybeSingle());
-var rr=await Promise.all(jobs);if(tok!==S.tok)return;
-S.replies=(rr[0].data||[]).map(P);
-if(rr[1]&&rr[1].data)S.parent=P(rr[1].data);
-}
-} else if(S.view==="tag"){
-var rt=await sb.from("post_tags").select("post_id").eq("tag",String(S.param).toLowerCase()).limit(100);
-var ids=(rt.data||[]).map(function(x){return x.post_id;});
-if(ids.length){
-var rp=await sb.from("post_feed").select("*").in("id",ids).order("created_at",{ascending:false});
-if(tok!==S.tok)return;
-S.posts=(rp.data||[]).map(P);
-} else S.posts=[];
-} else if(S.view==="profile"){
-var h=S.param||S.me.handle;
-var rpf=await sb.from("profiles").select("*").eq("handle",h).maybeSingle();
-if(tok!==S.tok)return;
-S.prof=rpf.data||null;S.posts=[];S.pstats=null;
-if(S.prof){
-var rs=await Promise.all([
-sb.from("post_feed").select("*").eq("handle",S.prof.handle).order("created_at",{ascending:false}).limit(60),
-sb.from("follows").select("follower_id",{count:"exact",head:true}).eq("followee_id",S.prof.id),
-sb.from("follows").select("followee_id",{count:"exact",head:true}).eq("follower_id",S.prof.id)
-]);
-if(tok!==S.tok)return;
-S.posts=(rs[0].data||[]).map(P);
-S.pstats={fl:rs[1].count||0,fg:rs[2].count||0};
-}
-} else if(S.view==="notifs"){
-var rn=await sb.from("notifications").select("id,type,read,created_at,post_id,actor:profiles!notifications_actor_id_fkey(handle,display_name,role),post:posts(body)").eq("user_id",S.me.id).order("created_at",{ascending:false}).limit(50);
-if(tok!==S.tok)return;
-S.notifs=rn.data||[];
-if(S.notifs.some(function(n){return !n.read;})){
-sb.from("notifications").update({read:true}).eq("user_id",S.me.id).eq("read",false).then(function(){S.unread=0;render();});
-}
-}
-await loadSide();
-}catch(e){
-console.error(e);
-if(tok===S.tok)S.toast="Veri yüklenemedi. Bağlantını kontrol et.";
-}
-if(tok===S.tok){S.loading=false;render();}
-}
-async function setSession(session){
-if(!session){
-S.me=null;S.boot=false;
-if(S.ch){sb.removeChannel(S.ch);S.ch=null;}
-render();return;
-}
-if(S.me&&S.me.id===session.user.id)return;
-var r=await sb.from("profiles").select("*").eq("id",session.user.id).maybeSingle();
-S.boot=false;
-if(!r.data){S.authErr="Profil bulunamadı. Çıkış yapıp tekrar kayıt olmayı dene.";S.me=null;render();return;}
-S.me=r.data;S.view="home";S.param=null;S.stack=[];
-startRealtime();
-loadView();
-}
-var refreshTimer=null;
-function scheduleRefresh(){
-clearTimeout(refreshTimer);
-refreshTimer=setTimeout(function(){loadView(true);},600);
-}
-function startRealtime(){
-if(S.ch||!S.me)return;
-S.ch=sb.channel("squawk-live")
-.on("postgres_changes",{event:"INSERT",schema:"public",table:"posts"},scheduleRefresh)
-.on("postgres_changes",{event:"INSERT",schema:"public",table:"notifications",filter:"user_id=eq."+S.me.id},scheduleRefresh)
-.subscribe();
-}
-async function doLogin(){
-var f=S.form;
-if(!f.email||!f.password){S.authErr="E-posta ve şifreni gir.";render();return;}
-S.busy=true;S.authErr="";render();
-var r=await sb.auth.signInWithPassword({email:f.email.trim(),password:f.password});
-S.busy=false;
-if(r.error){S.authErr=errText(r.error);render();}
-}
-async function doRegister(){
-var f=S.form,h=(f.handle||"").trim().replace(/^@/,""),n=(f.name||"").trim();
-var err="";
-if(!/^[A-Za-z0-9_]{3,20}$/.test(h))err="Kullanıcı adı 3-20 karakter olmalı (harf, rakam, alt çizgi).";
-else if(n.length<2)err="Görünen ad en az 2 karakter olmalı.";
-else if(!f.email)err="E-posta gir.";
-else if(!f.password||f.password.length<6)err="Şifre en az 6 karakter olmalı.";
-if(err){S.authErr=err;render();return;}
-S.busy=true;S.authErr="";S.authInfo="";render();
-var r=await sb.auth.signUp({
-email:f.email.trim(),password:f.password,
-options:{data:{handle:h,display_name:n,role:f.role||"pilot",bio:(f.bio||"").trim().slice(0,120)}}
-});
-S.busy=false;
-if(r.error){S.authErr=errText(r.error);render();return;}
-if(!r.data.session){S.authInfo="Kaydın alındı. E-postana gelen bağlantıyla hesabını onayla, sonra giriş yap.";S.mode="login";render();}
-}
-async function doLogout(){await sb.auth.signOut();}
-async function doForgot(){
-var email=(S.form.email||"").trim();
-if(!email){S.authErr="E-posta adresini gir.";render();return;}
-S.busy=true;S.authErr="";S.authInfo="";render();
-var r=await sb.auth.resetPasswordForEmail(email,{redirectTo:location.origin+location.pathname});
-S.busy=false;
-if(r.error){S.authErr=errText(r.error);}
-else{S.authInfo="Bu e-posta kayıtlıysa sıfırlama bağlantısı gönderildi. Gelen kutunu ve spam klasörünü kontrol et.";}
-render();
-}
-async function doRecover(){
-var pw=S.form.newpw||"";
-if(pw.length<6){S.authErr="Şifre en az 6 karakter olmalı.";render();return;}
-S.busy=true;S.authErr="";render();
-var r=await sb.auth.updateUser({password:pw});
-S.busy=false;
-if(r.error){S.authErr=errText(r.error);render();return;}
-S.form.newpw="";S.recovery=false;S.authInfo="";
-try{history.replaceState(null,"",location.pathname);}catch(e){}
-if(S.me){S.view="home";S.param=null;S.stack=[];loadView();}else{render();}
-toast("Şifren güncellendi.");
-}
-async function send(parent){
-var text=(parent?S.replyDraft:S.draft).trim();
-if(!text||text.length>MAX||S.busy||!S.me)return;
-S.busy=true;render();
-var r=await sb.from("posts").insert({author_id:S.me.id,body:text,parent_id:parent||null});
-S.busy=false;
-if(r.error){toast("Gönderilemedi: "+r.error.message);return;}
-if(parent)S.replyDraft="";else S.draft="";
-loadView(true);
-}
-async function toggleLike(id){
-var refs=allPostRefs().filter(function(p){return p.id===id;});
-if(!refs.length)return;
-var on=refs[0].lk;
-refs.forEach(function(p){p.lk=!on;p.lc+=on?-1:1;});
-render();
-var r=on?await sb.from("likes").delete().eq("user_id",S.me.id).eq("post_id",id)
-:await sb.from("likes").insert({user_id:S.me.id,post_id:id});
-if(r.error){toast("İşlem başarısız oldu.");loadView(true);}
-}
-async function toggleRepost(id){
-var refs=allPostRefs().filter(function(p){return p.id===id;});
-if(!refs.length)return;
-var on=refs[0].rp;
-refs.forEach(function(p){p.rp=!on;p.rc+=on?-1:1;});
-render();
-var r=on?await sb.from("reposts").delete().eq("user_id",S.me.id).eq("post_id",id)
-:await sb.from("reposts").insert({user_id:S.me.id,post_id:id});
-if(r.error){toast("İşlem başarısız oldu.");loadView(true);}
-}
-async function toggleFollow(handle){
-var pr=await sb.from("profiles").select("id").eq("handle",handle).maybeSingle();
-if(!pr.data)return;
-var on=!!S.follows[handle];
-if(on)S.follows[handle]=false,delete S.follows[handle];else S.follows[handle]=true;
-render();
-var r=on?await sb.from("follows").delete().eq("follower_id",S.me.id).eq("followee_id",pr.data.id)
-:await sb.from("follows").insert({follower_id:S.me.id,followee_id:pr.data.id});
-if(r.error)toast("İşlem başarısız oldu.");
-loadView(true);
-}
-function avatar(u,cls){
-var hue=hash(u.h)%360;
-var ini=String(u.n||u.h||"?").trim().slice(0,1).toUpperCase();
-return '<div class="av '+(cls||"")+'" data-user="'+esc(u.h)+'" style="background:hsl('+hue+',65%,62%)">'+esc(ini)+'</div>';
-}
-function roleChip(k){var r=role(k);return '<span class="role" style="color:'+r.c+'">'+esc(r.n)+'</span>';}
-function vbadge(v){return v?'<span class="vb" title="Onaylı hesap">✔</span>':"";}
-function postHTML(p,opt){
-opt=opt||{};
-var likeOn=p.lk?" on":"",rpOn=p.rp?" on":"";
-var acts='<div class="acts">'+
-'<button data-act="open" data-id="'+p.id+'" title="Yanıtla">💬 '+(p.cc||"")+'</button>'+
-'<button class="rp'+rpOn+'" data-act="rp" data-id="'+p.id+'" title="Yeniden paylaş">🔁 '+(p.rc||"")+'</button>'+
-'<button class="like'+likeOn+'" data-act="like" data-id="'+p.id+'" title="Beğen">'+(p.lk?"♥":"♡")+' '+(p.lc||"")+'</button>'+
-'</div>';
-var u={h:p.h,n:p.n};
-if(opt.big){
-return '<article class="post big"><div class="top">'+avatar(u)+'<div><b data-user="'+esc(p.h)+'" style="cursor:pointer">'+esc(p.n)+'</b>'+vbadge(p.v)+'<br><span style="color:var(--muted)">@'+esc(p.h)+'</span> '+roleChip(p.r)+'</div></div>'+
-'<div class="text" style="margin-top:12px">'+rich(p.t)+'</div>'+
-'<div class="meta">'+fullDate(p.ts)+' · <b style="color:var(--text)">'+p.lc+'</b> beğeni · <b style="color:var(--text)">'+p.rc+'</b> yeniden paylaşım</div>'+acts+'</article>';
-}
-var rep=(p.p&&!opt.hideReplying)?'<div class="replying">↩ Bir squawk\'a yanıt</div>':"";
-return '<article class="post" data-act="open" data-id="'+p.id+'">'+avatar(u)+
-'<div class="body"><div class="head"><b data-user="'+esc(p.h)+'">'+esc(p.n)+'</b>'+vbadge(p.v)+
-'<span class="h">@'+esc(p.h)+'</span>'+roleChip(p.r)+'<span class="t">· '+ago(p.ts)+'</span></div>'+
-rep+'<div class="text">'+rich(p.t)+'</div>'+acts+'</div></article>';
-}
-function composer(id,ph,draft,btn){
-var n=draft.length,cls=n>MAX?"over":(n>MAX-30?"warn":"");
-return '<div class="composer">'+avatar({h:S.me.handle,n:S.me.display_name})+'<div style="flex:1">'+
-'<textarea id="'+id+'" placeholder="'+esc(ph)+'" rows="2">'+esc(draft)+'</textarea>'+
-'<div class="row"><span class="count '+cls+'" id="'+id+'Cnt">'+(MAX-n)+'</span>'+
-'<button class="btn" id="'+id+'Btn" data-act="'+(id==="reply"?"sendReply":"send")+'" '+((!draft.trim()||n>MAX||S.busy)?"disabled":"")+'>'+btn+'</button></div></div></div>';
-}
-function listPosts(arr,empty){
-if(S.loading&&!arr.length)return '<div class="empty">Yükleniyor…</div>';
-if(!arr.length)return '<div class="empty">'+empty+'</div>';
-return arr.map(function(p){return postHTML(p);}).join("");
-}
-function backBar(title){return '<div class="topbar"><div class="back"><button data-act="back">←</button><h1 style="padding-left:0">'+esc(title)+'</h1></div></div>';}
-function pageHome(){
-return '<div class="topbar"><h1>Ana Sayfa</h1><div class="tabs">'+
-'<button class="'+(S.tab==="all"?"on":"")+'" data-act="tab" data-v="all">Herkes</button>'+
-'<button class="'+(S.tab==="follow"?"on":"")+'" data-act="tab" data-v="follow">Takip Ettiklerim</button></div></div>'+
-composer("draft","Frekansta ne var? (Kısa tut, net ol.)",S.draft,"Squawk'la")+
-listPosts(S.posts,S.tab==="follow"?"Henüz kimseyi takip etmiyorsun ya da takip ettiklerin yazmadı. Keşfet'ten havacıları takip et.":"Henüz squawk yok. İlkini sen at!");
-}
-function pageExplore(){
-var chips='<span class="chip '+(S.filter==="all"?"on":"")+'" data-act="filter" data-v="all">Tümü</span>'+
-ROLES.map(function(r){return '<span class="chip '+(S.filter===r.k?"on":"")+'" data-act="filter" data-v="'+r.k+'">'+esc(r.n)+'</span>';}).join("");
-return '<div class="topbar"><h1>Keşfet</h1></div>'+
-'<div class="search"><input id="q" placeholder="Squawk, kişi veya kelime ara" value="'+esc(S.q)+'"></div>'+
-'<div class="chips">'+chips+'</div>'+listPosts(S.posts,"Sonuç yok.");
-}
-function pageNotifs(){
-var icons={like:"♥",reply:"💬",follow:"➕",repost:"🔁"};
-var txt={like:"squawk'ını beğendi",reply:"squawk'ına yanıt verdi",follow:"seni takip etti",repost:"squawk'ını yeniden paylaştı"};
-var html='<div class="topbar"><h1>Bildirimler</h1></div>';
-if(S.loading&&!S.notifs.length)return html+'<div class="empty">Yükleniyor…</div>';
-if(!S.notifs.length)return html+'<div class="empty">Henüz bildirim yok.</div>';
-return html+S.notifs.map(function(n){
-var a=n.actor||{handle:"?",display_name:"?",role:"pilot"};
-var open=n.post_id?'data-act="open" data-id="'+n.post_id+'"':'data-act="profile" data-h="'+esc(a.handle)+'"';
-return '<div class="notif '+(n.read?"":"new")+'" '+open+'><div class="ic" style="color:'+(n.type==="like"?"var(--red)":"var(--amber)")+'">'+(icons[n.type]||"•")+'</div>'+
-'<div><div class="av sm" style="background:hsl('+(hash(a.handle)%360)+',65%,62%)">'+esc(String(a.display_name).slice(0,1).toUpperCase())+'</div>'+
-'<div style="margin-top:6px"><b>'+esc(a.display_name)+'</b> '+(txt[n.type]||"")+'</div>'+
-(n.post?'<p>'+esc(n.post.body.slice(0,90))+(n.post.body.length>90?"…":"")+'</p>':"")+'<p>'+ago(new Date(n.created_at).getTime())+'</p></div></div>';
-}).join("");
-}
-function pageProfile(){
-var u=S.prof;
-if(!u)return backBar("Profil")+'<div class="empty">'+(S.loading?"Yükleniyor…":"Bu kullanıcı bulunamadı.")+'</div>';
-var mine=u.id===S.me.id,isF=!!S.follows[u.handle];
-var btn=mine?'<button class="btn ghost sm" data-act="logout">Çıkış</button>':
-'<button class="btn sm '+(isF?"ghost":"")+'" data-act="follow" data-user="'+esc(u.handle)+'">'+(isF?"Takiptesin":"Takip Et")+'</button>';
-var st=S.pstats||{fl:0,fg:0};
-return backBar(u.display_name)+'<div class="banner"></div><div class="prof"><div class="row">'+avatar({h:u.handle,n:u.display_name},"lg")+btn+'</div>'+
-'<h2>'+esc(u.display_name)+vbadge(u.is_verified)+'</h2><div class="h">@'+esc(u.handle)+' '+roleChip(u.role)+'</div>'+
-'<div class="bio">'+esc(u.bio||"")+'</div>'+
-'<div class="stats"><span><b>'+S.posts.length+'</b> squawk</span><span><b>'+st.fl+'</b> takipçi</span><span><b>'+st.fg+'</b> takip</span></div></div>'+
-listPosts(S.posts,"Henüz squawk yok.");
-}
-function pageThread(){
-var p=S.post;
-if(!p)return backBar("Squawk")+'<div class="empty">'+(S.loading?"Yükleniyor…":"Bu squawk bulunamadı.")+'</div>';
-var html=backBar("Squawk");
-if(S.parent)html+='<div style="opacity:.8">'+postHTML(S.parent,{hideReplying:true})+'</div>';
-html+=postHTML(p,{big:true})+composer("reply","Yanıtını yaz…",S.replyDraft,"Yanıtla");
-html+=listPosts(S.replies,"Henüz yanıt yok.");
-return html;
-}
-function pageTag(){return backBar("#"+S.param)+listPosts(S.posts,"Bu etiketle squawk yok.");}
-var LOGO='<svg width="30" height="30" viewBox="0 0 32 32"><circle cx="16" cy="16" r="14" fill="none" stroke="#ffb020" stroke-width="2.5"/><circle cx="16" cy="16" r="7" fill="none" stroke="#ffb020" stroke-width="2" opacity=".6"/><path d="M16 16L26 8" stroke="#3ddc97" stroke-width="2.5" stroke-linecap="round"/><circle cx="16" cy="16" r="2" fill="#ffb020"/></svg>';
-function sidebar(){
-var u=S.unread,me=S.me;
-function item(v,ico,lbl,extra){return '<a class="'+(S.view===v?"on":"")+'" data-act="nav" data-v="'+v+'"><span class="ico">'+ico+'</span><span class="lbl">'+lbl+'</span>'+(extra||"")+'</a>';}
-return '<aside class="side"><div class="brand">'+LOGO+'<span class="w">Squawk</span></div>'+
-'<nav class="nav">'+item("home","⌂","Ana Sayfa")+item("explore","⌕","Keşfet")+item("notifs","🔔","Bildirimler",u?'<span class="badge">'+u+'</span>':"")+item("profile","◉","Profil")+'</nav>'+
-'<button class="btn" data-act="compose">Squawk At</button>'+
-'<div class="me-chip" data-act="nav" data-v="profile">'+avatar({h:me.handle,n:me.display_name},"sm")+'<div><b>'+esc(me.display_name)+'</b><small>@'+esc(me.handle)+'</small></div></div></aside>';
-}
-function rightcol(){
-return '<aside class="right">'+
-'<div class="box"><h3>Gündemdeki Etiketler</h3>'+(S.trend.length?S.trend.map(function(t){return '<span class="trend" data-tag="'+esc(t.tag)+'"><b>#'+esc(t.tag)+'</b><small>'+t.n+' squawk</small></span>';}).join(""):'<small style="color:var(--muted)">Henüz etiket yok</small>')+'</div>'+
-'<div class="box"><h3>Kimi takip etmeli?</h3>'+(S.sugg.length?S.sugg.map(function(x){return '<div class="suggest">'+avatar({h:x.handle,n:x.display_name},"sm")+'<div class="grow" data-user="'+esc(x.handle)+'"><b>'+esc(x.display_name)+'</b><small>@'+esc(x.handle)+' · '+esc(role(x.role).n)+'</small></div><button class="btn sm" data-act="follow" data-user="'+esc(x.handle)+'">Takip</button></div>';}).join(""):'<small style="color:var(--muted)">Önerilecek kimse kalmadı</small>')+'</div>'+
-'<small style="color:var(--muted);padding:0 4px">Squawk · sadece havacılar için. Onaylı hesaplar yakında.</small></aside>';
-}
-function bottomnav(){
-function it(v,ico){return '<a class="'+(S.view===v?"on":"")+'" data-act="nav" data-v="'+v+'">'+ico+(v==="notifs"&&S.unread?'<span class="badge">'+S.unread+'</span>':"")+'</a>';}
-return '<nav class="bottom">'+it("home","⌂")+it("explore","⌕")+it("notifs","🔔")+it("profile","◉")+'</nav>';
-}
-function forgotView(){
-var f=S.form;
-return '<div class="auth"><div class="auth-card"><div class="brand">'+LOGO.replace('width="30" height="30"','width="40" height="40"')+'<div>Squawk<small>Şifre sıfırlama</small></div></div>'+
-'<h2>Şifreni mi unuttun?</h2><p>Kayıt olurken kullandığın e-postayı yaz, sıfırlama bağlantısı gönderelim.</p>'+
-'<label class="field"><span>E-posta</span><input data-f="email" type="email" placeholder="ornek@eposta.com" value="'+esc(f.email||"")+'" autocomplete="email"></label>'+
-'<div class="err">'+esc(S.authErr)+'</div>'+(S.authInfo?'<div class="okmsg">'+esc(S.authInfo)+'</div>':"")+
-'<button class="btn full" data-act="sendReset" '+(S.busy?"disabled":"")+'>'+(S.busy?"Bekleyin…":"Bağlantı Gönder")+'</button>'+
-'<div class="note"><a data-act="mode" data-v="login" style="cursor:pointer;color:var(--amber)">← Girişe dön</a></div></div></div>';
-}
-function recoverView(){
-var f=S.form;
-return '<div class="auth"><div class="auth-card"><div class="brand">'+LOGO.replace('width="30" height="30"','width="40" height="40"')+'<div>Squawk<small>Yeni şifre</small></div></div>'+
-'<h2>Yeni şifreni belirle</h2><p>En az 6 karakter olsun.</p>'+
-'<label class="field"><span>Yeni şifre</span><input data-f="newpw" type="password" placeholder="Yeni şifre" value="'+esc(f.newpw||"")+'" autocomplete="new-password"></label>'+
-'<div class="err">'+esc(S.authErr)+'</div>'+
-'<button class="btn full" data-act="saveNewPw" '+(S.busy?"disabled":"")+'>'+(S.busy?"Bekleyin…":"Şifreyi Kaydet")+'</button></div></div>';
-}
-function authView(){
-if(S.mode==="forgot")return forgotView();
-var f=S.form,reg=S.mode==="register";
-var opts=ROLES.map(function(r){return '<option value="'+r.k+'"'+((f.role||"pilot")===r.k?" selected":"")+'>'+esc(r.n)+'</option>';}).join("");
-function fld(label,name,type,ph,extra){return '<label class="field"><span>'+label+'</span><input data-f="'+name+'" type="'+type+'" placeholder="'+ph+'" value="'+esc(f[name]||"")+'" '+(extra||"")+'></label>';}
-return '<div class="auth"><div class="auth-card"><div class="brand">'+LOGO.replace('width="30" height="30"','width="40" height="40"')+'<div>Squawk<small>Havacıların frekansı</small></div></div>'+
-'<div class="tabs" style="margin:18px 0 6px"><button class="'+(!reg?"on":"")+'" data-act="mode" data-v="login">Giriş</button><button class="'+(reg?"on":"")+'" data-act="mode" data-v="register">Kayıt Ol</button></div>'+
-(reg?'<p>Sadece havacılara özel. Takma adınla yaz, rolünle tanın.</p>':'<p>Hesabınla giriş yap.</p>')+
-fld("E-posta","email","email","ornek@eposta.com",'autocomplete="email"')+
-fld("Şifre","password","password","En az 6 karakter",'autocomplete="'+(reg?"new-password":"current-password")+'"')+
-(reg?fld("Kullanıcı adı (takma ad)","handle","text","örn. kule_kulagi",'maxlength="20" autocomplete="off"')+
-fld("Görünen ad","name","text","örn. Kule Kulağı",'maxlength="30" autocomplete="off"')+
-'<label class="field"><span>Rolün</span><select data-f="role">'+opts+'</select></label>'+
-'<label class="field"><span>Kısa biyografi (isteğe bağlı)</span><textarea data-f="bio" rows="2" maxlength="120">'+esc(f.bio||"")+'</textarea></label>':"")+
-'<div class="err">'+esc(S.authErr)+'</div>'+(S.authInfo?'<div class="okmsg">'+esc(S.authInfo)+'</div>':"")+
-'<button class="btn full" data-act="'+(reg?"register":"login")+'" '+(S.busy?"disabled":"")+'>'+(S.busy?"Bekleyin…":(reg?"Katıl":"Giriş Yap"))+'</button>'+
-(reg?"":'<div class="note"><a data-act="mode" data-v="forgot" style="cursor:pointer;color:var(--amber)">Şifremi unuttum</a></div>')+
-'<div class="note">Rol doğrulaması (onaylı hesap) sonraki aşamada gelecek.</div></div></div>';
-}
-function render(){
-var focusId=document.activeElement&&(document.activeElement.id||document.activeElement.getAttribute("data-f"));
-var focusKey=document.activeElement&&document.activeElement.id?"id":"f";
-var pos=(document.activeElement&&document.activeElement.selectionStart!=null)?document.activeElement.selectionStart:null;
-if(S.boot){APP.innerHTML='<div class="auth"><div class="brand">'+LOGO+'<span>Squawk</span></div></div>';return;}
-if(S.recovery){APP.innerHTML=recoverView()+toastHTML();}
-else if(!S.me){APP.innerHTML=authView()+toastHTML();}
-else{
-var main;
-switch(S.view){
-case "explore":main=pageExplore();break;
-case "notifs":main=pageNotifs();break;
-case "profile":main=pageProfile();break;
-case "thread":main=pageThread();break;
-case "tag":main=pageTag();break;
-default:main=pageHome();
-}
-APP.innerHTML='<div class="shell">'+sidebar()+'<main>'+main+'</main>'+rightcol()+'</div>'+bottomnav()+toastHTML();
-}
-if(focusId){
-var el=focusKey==="id"?document.getElementById(focusId):document.querySelector('[data-f="'+focusId+'"]');
-if(el){el.focus();if(pos!=null&&el.setSelectionRange)try{el.setSelectionRange(pos,pos);}catch(e){}}
-}
-}
-function toastHTML(){return S.toast?'<div class="toast">'+esc(S.toast)+'</div>':"";}
-function go(view,param,noStack){
-if(!noStack)S.stack.push({view:S.view,param:S.param});
-S.view=view;S.param=param||null;
-S.posts=[];S.replies=[];S.post=null;S.parent=null;S.prof=null;
-window.scrollTo(0,0);
-loadView();
-}
-function back(){
-var p=S.stack.pop();
-S.posts=[];S.replies=[];S.post=null;S.parent=null;S.prof=null;
-if(p){S.view=p.view;S.param=p.param;}else{S.view="home";S.param=null;}
-loadView();
-}
-function act(el){
-var a=el.getAttribute("data-act"),id=el.getAttribute("data-id"),v=el.getAttribute("data-v"),uh=el.getAttribute("data-user")||el.getAttribute("data-h");
-switch(a){
-case "mode":S.mode=v;S.authErr="";S.authInfo="";render();break;
-case "login":doLogin();break;
-case "sendReset":doForgot();break;
-case "saveNewPw":doRecover();break;
-case "register":doRegister();break;
-case "logout":doLogout();break;
-case "nav":S.stack=[];go(v,v==="profile"?S.me.handle:null,true);break;
-case "tab":S.tab=v;loadView();break;
-case "filter":S.filter=v;loadView();break;
-case "like":toggleLike(id);break;
-case "rp":toggleRepost(id);break;
-case "open":go("thread",id);break;
-case "profile":go("profile",uh);break;
-case "follow":toggleFollow(uh);break;
-case "back":back();break;
-case "compose":S.stack=[];S.tab="all";S.view="home";S.param=null;loadView();setTimeout(function(){var d=document.getElementById("draft");if(d)d.focus();},50);break;
-case "send":send(null);break;
-case "sendReply":send(S.param);break;
-}
-}
-document.addEventListener("click",function(e){
-var t=e.target;
-var btn=t.closest("button[data-act]");
-if(btn){act(btn);return;}
-var tag=t.closest("[data-tag]");
-if(tag){go("tag",tag.getAttribute("data-tag"));return;}
-var us=t.closest("[data-user]");
-if(us&&!us.closest('[data-act="nav"]')&&!us.closest(".notif")){go("profile",us.getAttribute("data-user"));return;}
-var el=t.closest("[data-act]");
-if(el)act(el);
-});
-var searchTimer=null;
-document.addEventListener("input",function(e){
-var el=e.target,id=el.id,f=el.getAttribute("data-f");
-if(f){S.form[f]=el.value;return;}
-if(id==="draft"||id==="reply"){
-var v=el.value;
-if(id==="draft")S.draft=v;else S.replyDraft=v;
-var n=v.length,c=document.getElementById(id+"Cnt"),b=document.getElementById(id+"Btn");
-if(c){c.textContent=MAX-n;c.className="count "+(n>MAX?"over":(n>MAX-30?"warn":""));}
-if(b)b.disabled=!v.trim()||n>MAX||S.busy;
-} else if(id==="q"){
-S.q=el.value;
-clearTimeout(searchTimer);
-searchTimer=setTimeout(function(){loadView(true);},350);
-}
-});
-document.addEventListener("keydown",function(e){
-if(e.key==="Enter"&&e.target.getAttribute&&e.target.getAttribute("data-f")&&e.target.tagName==="INPUT"){
-e.preventDefault();if(S.recovery)doRecover();else if(S.mode==="forgot")doForgot();else if(S.mode==="register")doRegister();else doLogin();return;
-}
-if((e.ctrlKey||e.metaKey)&&e.key==="Enter"){
-if(e.target.id==="draft")send(null);
-if(e.target.id==="reply")send(S.param);
-}
-});
-sb.auth.onAuthStateChange(function(ev,session){
-setTimeout(function(){
-if(ev==="PASSWORD_RECOVERY"){S.recovery=true;S.boot=false;S.authErr="";render();}
-if(ev==="SIGNED_OUT")setSession(null);
-else if(session&&(ev==="SIGNED_IN"||ev==="INITIAL_SESSION"))setSession(session);
-else if(ev==="INITIAL_SESSION"&&!session)setSession(null);
-},0);
-});
 render();
 })();
 </script>
