@@ -668,7 +668,7 @@ function avatar(u,cls){
 var hue=hash(u.h)%360,ini=String(u.n||u.h||"?").trim().slice(0,1).toUpperCase(),rc=role(u.r).c;
 return '<div class="av '+(cls||"")+'" data-user="'+esc(u.h)+'" style="--rc:'+rc+';background:hsl('+hue+',65%,62%)">'+(u.av?'<img src="'+esc(u.av)+'" alt="" loading="lazy">':esc(ini))+'</div>';
 }
-function roleChip(k){var r=role(k);return '<span class="role" style="color:'+r.c+'">'+esc(r.n)+'</span>';}
+function roleChip(k){return "";}
 var TOPICS=["Genel","Uçuş Operasyonu","Teknik / Bakım","Mevzuat","Eğitim / Kariyer","Hava Durumu","Havalimanı"];
 var ACTYPES=["B737","A320","A330","B777","ATR72","E190","Citation","Global","King Air","Cessna 172"];
 function orgBadge(o){return o?'<span class="orgb" title="Doğrulanmış kurum">'+ic("brief",10)+esc(o)+'</span>':"";}
