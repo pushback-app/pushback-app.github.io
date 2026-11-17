@@ -259,6 +259,16 @@ main{padding-bottom:calc(76px + env(safe-area-inset-bottom))}.bottom{padding-bot
 [dir="rtl"] .topbar .back h1{padding-left:0;padding-right:8px}[dir="rtl"] .bp i{left:auto;right:12px}
 [dir="rtl"] .i[class]{transform:none}
 @media (max-width:1020px){[dir="rtl"] .nav a.on:before{left:auto;right:-6px}}
+.acts .like.on{color:var(--green)}.acts .like.on svg{fill:none}.acts .like.on svg circle{fill:var(--green)}.acts .like.on svg path{stroke:#fff}
+.pimgs{display:grid;gap:3px;margin:2px 0 8px;border-radius:14px;overflow:hidden;border:1px solid var(--line)}
+.pimgs .pimg{margin:0;border:0;border-radius:0;width:100%;max-height:none;height:150px}
+.pimgs.n1{display:block}.pimgs.n1 .pimg{height:auto;max-height:420px}
+.pimgs.n2,.pimgs.n3,.pimgs.n4{grid-template-columns:1fr 1fr}
+.pimgs.n3 .pimg:first-child{grid-row:span 2;height:303px}
+.qcard{border:1px solid var(--line);border-radius:14px;padding:10px 12px;margin:6px 0 8px;cursor:pointer;overflow:hidden}
+.qcard .qh{font-size:14px}.qcard .qh span{color:var(--muted)}.qcard .qt{margin-top:4px;white-space:pre-wrap;word-break:break-word}.qcard .pimgs{margin:8px 0 0}
+.relh{font:12px var(--mono);color:var(--muted);margin-bottom:4px;display:flex;gap:6px;align-items:center}
+.attach{display:flex;flex-wrap:wrap;gap:6px}.attach .ai{position:relative;display:inline-block}.attach img{max-height:110px}
 </style>
 </head>
 <body>
@@ -323,7 +333,7 @@ if(!PATRX)PATRX=I18N.pat.map(function(p){return {r:new RegExp(p.r),t:p.t};});
 for(var i=0;i<PATRX.length;i++){var mm=core.match(PATRX[i].r);if(mm){var t=PATRX[i].t[LANG]||PATRX[i].t.en;return lead+t.replace(/\{0\}/g,mm[1])+trail;}}
 return s;
 }
-var L10N_SKIP=".text,.bio,.ttl,blockquote,h4,.urow .g,.job .mono,.prof h2,.prof .h,.post .head b,.post .head .h,.post .top b,textarea,[data-ugc]";
+var L10N_SKIP=".text,.bio,.ttl,blockquote,h4,.urow .g,.qcard,.job .mono,.prof h2,.prof .h,.post .head b,.post .head .h,.post .top b,textarea,[data-ugc]";
 function L10N(root){
 if(!root||LANG==="tr")return;
 var w=document.createTreeWalker(root,NodeFilter.SHOW_TEXT,null),n,list=[];
@@ -381,7 +391,7 @@ mode:"login",authErr:"",authInfo:"",form:{},show:{},busy:false,boot:true,recover
 me:null,email:"",posts:[],replies:[],parent:null,post:null,prof:null,pstats:null,pinned:null,notifs:[],people:[],users:[],
 trend:[],sugg:[],unread:0,follows:{},blk:{},blkList:[],loading:false,toast:"",tok:0,ch:null,
 theme:lsGet("sq_theme","auto"),accent:lsGet("sq_accent","amber"),
-img:null,modal:null,mf:{},ef:{},tq:"",verif:null,
+imgs:[],modal:null,mf:{},ef:{},tq:"",verif:null,
 adm:{tab:"stats",orgs:[],stats:null,reports:[],verifs:[],users:[],uq:""}
 };
 function esc(s){return String(s==null?"":s).replace(/[&<>"']/g,function(c){return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c];});}
@@ -408,7 +418,7 @@ if(window.matchMedia)try{window.matchMedia("(prefers-color-scheme: dark)").addEv
 function P(r){
 return {id:r.id,p:r.parent_id,t:r.body,ts:new Date(r.created_at).getTime(),ed:r.edited_at?new Date(r.edited_at).getTime():0,img:r.image_url,aid:r.author_id,
 h:r.handle,n:r.display_name,r:r.role,v:!!r.is_verified,av:r.avatar_url,ti:r.title||"",
-k:r.kind||"post",tp:r.topic||"",ac:r.accepted_reply_id||null,org:r.org||"",lc:Number(r.like_count)||0,rc:Number(r.repost_count)||0,cc:Number(r.reply_count)||0,lk:!!r.liked_by_me,rp:!!r.reposted_by_me,bm:!!r.bookmarked_by_me};
+k:r.kind||"post",tp:r.topic||"",ac:r.accepted_reply_id||null,org:r.org||"",lc:Number(r.like_count)||0,rc:Number(r.repost_count)||0,cc:Number(r.reply_count)||0,lk:!!r.liked_by_me,rp:!!r.reposted_by_me,bm:!!r.bookmarked_by_me,qo:r.quote_of||null,im:(r.images&&r.images.length)?r.images:[],q:r.quote_of?{id:r.quote_of,t:r.q_body||"",im:(r.q_images&&r.q_images.length)?r.q_images:(r.q_image?[r.q_image]:[]),h:r.q_handle||"",n:r.q_name||"",v:!!r.q_verified}:null};
 }
 function visible(arr){return arr.filter(function(p){return !S.blk[p.aid]||(S.view==="profile"&&S.prof&&S.prof.id===p.aid);});}
 function allPostRefs(){var a=[].concat(S.posts,S.replies);if(S.post)a.push(S.post);if(S.parent)a.push(S.parent);if(S.pinned)a.push(S.pinned);return a;}
@@ -623,14 +633,21 @@ var text=(parent?S.replyDraft:S.draft).trim();
 if(!text||text.length>MAX||S.busy||!S.me)return;
 S.busy=true;render();
 try{
-var url=null;
-if(!parent&&S.img){url=await uploadImg("post-images",S.img.file,1600);}
-var ins={author_id:S.me.id,body:text,parent_id:parent||null,image_url:url};if(!parent&&S.dk==="question"){ins.kind="question";ins.topic=S.dtopic;}var r=await sb.from("posts").insert(ins);
+var urls=[];
+if(!parent&&S.imgs.length){for(var ii=0;ii<S.imgs.length;ii++)urls.push(await uploadImg("post-images",S.imgs[ii].file,1600));}
+var ins={author_id:S.me.id,body:text,parent_id:parent||null,images:urls};if(!parent&&S.dk==="question"){ins.kind="question";ins.topic=S.dtopic;}var r=await sb.from("posts").insert(ins);
 if(r.error)throw r.error;
-if(parent)S.replyDraft="";else{S.draft="";S.img=null;S.dk="post";}
+if(parent)S.replyDraft="";else{S.draft="";S.imgs=[];S.dk="post";}
 }catch(e){S.busy=false;toast("Gönderilemedi: "+(e.message||e));return;}
 S.busy=false;loadView(true);
 }
+async function doRelay(){var p=S.modal.post;S.modal=null;var r;
+if(p.rp)r=await sb.from("posts").delete().eq("author_id",S.me.id).eq("quote_of",p.id).eq("body","");
+else r=await sb.from("posts").insert({author_id:S.me.id,body:"",quote_of:p.id});
+if(r.error)toast("İşlem başarısız oldu.");else toast(p.rp?"Relay geri alındı.":"Relay edildi.");loadView(true);}
+async function doQuote(){var p=S.modal.post,t=(S.mf.text||"").trim();if(t.length>MAX)return;S.modal=null;S.mf={};
+var r=await sb.from("posts").insert({author_id:S.me.id,body:t,quote_of:p.id});
+if(r.error)toast("Gönderilemedi.");else toast("Relay edildi.");loadView(true);}
 async function toggleOn(table,col,id,flag,key){
 var refs=allPostRefs().filter(function(p){return p.id===id;});if(!refs.length)return;
 var on=refs[0][flag];
@@ -732,7 +749,7 @@ image:'<rect x="3" y="4" width="18" height="16" rx="2"/><circle cx="9" cy="10" r
 lock:'<rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/>',
 eye:'<path d="M2 12s4-7 10-7 10 7 10 7-4 7-10 7S2 12 2 12z"/><circle cx="12" cy="12" r="3"/>',
 eyeoff:'<path d="M3 3l18 18"/><path d="M10.6 6.1A9.8 9.8 0 0 1 12 5c6 0 10 7 10 7a17 17 0 0 1-3.2 3.9M6.6 6.7C3.9 8.5 2 12 2 12s4 7 10 7a9.7 9.7 0 0 0 4-.9"/><path d="M9.9 9.9a3 3 0 0 0 4.2 4.2"/>',
-check:'<path d="m5 12 5 5 9-10"/>',x:'<path d="M6 6l12 12M18 6 6 18"/>',back:'<path d="M15 5l-7 7 7 7"/>',
+roger:'<circle cx="12" cy="12" r="9"/><path d="m8 12.5 3 3 5-6"/>',check:'<path d="m5 12 5 5 9-10"/>',x:'<path d="M6 6l12 12M18 6 6 18"/>',back:'<path d="M15 5l-7 7 7 7"/>',
 sun:'<circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M2 12h2M20 12h2M5 5l1.5 1.5M17.5 17.5 19 19M5 19l1.5-1.5M17.5 6.5 19 5"/>',
 moon:'<path d="M20 14.5A8 8 0 0 1 9.5 4 8 8 0 1 0 20 14.5z"/>',auto:'<circle cx="12" cy="12" r="9"/><path d="M12 3v18" /><path d="M12 3a9 9 0 0 1 0 18z" fill="currentColor"/>',
 trash:'<path d="M4 7h16M9 7V4h6v3M6 7l1 13h10l1-13"/>',flag:'<path d="M5 21V4M5 4h11l-2 4 2 4H5"/>',edit:'<path d="M4 20h4L19 9l-4-4L4 16z"/>',
@@ -756,31 +773,33 @@ var ACTYPES=["B737","A320","A330","B777","ATR72","E190","Citation","Global","Kin
 function orgBadge(o){return o?'<span class="orgb" title="Doğrulanmış kurum">'+ic("brief",10)+esc(o)+'</span>':"";}
 function vbadge(v){return v?'<span class="vb" title="Onaylı hesap">'+ic("check",10)+'</span>':"";}
 function ring(n){var c=62.83,o=Math.max(0,Math.min(c,c*(1-n/MAX)));return '<svg class="ring" viewBox="0 0 26 26"><circle class="bg" cx="13" cy="13" r="10"/><circle class="fg" id="draftRingFg" cx="13" cy="13" r="10" stroke-dasharray="'+c+'" stroke-dashoffset="'+o+'"/></svg>';}
+function imgsHTML(a){if(!a||!a.length)return "";return '<div class="pimgs n'+a.length+'">'+a.map(function(s){return '<img class="pimg" src="'+esc(s)+'" data-act="zoom" data-src="'+esc(s)+'" alt="" loading="lazy">';}).join("")+'</div>';}
+function quoteHTML(p){if(!p.qo||!p.q)return "";var q=p.q;return '<div class="qcard" data-act="open" data-id="'+q.id+'"><div class="qh"><b>'+esc(q.n)+'</b>'+vbadge(q.v)+' <span>@'+esc(q.h)+'</span></div>'+(q.t?'<div class="qt">'+rich(q.t)+'</div>':"")+imgsHTML(q.im)+'</div>';}
 function postHTML(p,opt){
 opt=opt||{};
 var acts='<div class="acts">'+
 '<button data-act="open" data-id="'+p.id+'" title="Yanıtla">'+ic("chat",17)+'<span>'+(p.cc||"")+'</span></button>'+
 '<button class="rp'+(p.rp?" on":"")+'" data-act="rp" data-id="'+p.id+'" title="Yeniden paylaş">'+ic("repeat",17)+'<span>'+(p.rc||"")+'</span></button>'+
-'<button class="like'+(p.lk?" on":"")+'" data-act="like" data-id="'+p.id+'" title="Beğen">'+ic("heart",17)+'<span>'+(p.lc||"")+'</span></button>'+
+'<button class="like'+(p.lk?" on":"")+'" data-act="like" data-id="'+p.id+'" title="Roger">'+ic("roger",17)+'<span>'+(p.lc||"")+'</span></button>'+
 '<button class="bm'+(p.bm?" on":"")+'" data-act="bm" data-id="'+p.id+'" title="Yer imi">'+ic("bookmark",17)+'</button>'+
 '<span class="sq">SQK '+sqk(p.h)+'</span></div>';
-var u={h:p.h,n:p.n,av:p.av,r:p.r},rc=role(p.r).c,img=p.img?'<img class="pimg" src="'+esc(p.img)+'" data-act="zoom" data-src="'+esc(p.img)+'" alt="" loading="lazy">':"";
+var u={h:p.h,n:p.n,av:p.av,r:p.r},rc=role(p.r).c,img=imgsHTML(p.im&&p.im.length?p.im:(p.img?[p.img]:[]))+quoteHTML(p),plain=!!(p.qo&&!p.t),oid=plain?p.qo:p.id;if(plain)acts="";
 var menu='<button class="more" data-act="menu" data-id="'+p.id+'" title="Seçenekler">'+ic("more",18)+'</button>';
 if(opt.big){
 return '<article class="post big" style="--rc:'+rc+'"><div class="top">'+avatar(u)+'<div style="flex:1;min-width:0"><b data-user="'+esc(p.h)+'" style="cursor:pointer">'+esc(p.n)+'</b>'+vbadge(p.v)+'<br><span style="color:var(--muted)">@'+esc(p.h)+'</span> '+roleChip(p.r)+orgBadge(p.org)+(p.ti?'<div class="ttl">'+esc(ttl(p.ti))+'</div>':"")+'</div>'+menu+'</div>'+
 (p.k==="question"?'<div class="qtag" style="margin-top:10px"><span>? SORU</span>'+(p.tp?' · <span>'+esc(p.tp)+'</span>':"")+(p.ac?' <i class="ok">✓ ÇÖZÜLDÜ</i>':"")+'</div>':"")+'<div class="text" style="margin-top:12px">'+rich(p.t)+'</div>'+img+
-'<div class="meta">'+zulu(p.ts)+' · '+fullDate(p.ts)+(p.ed?' '+tx('· düzenlendi'):"")+' · <b style="color:var(--text)">'+p.lc+'</b> beğeni · <b style="color:var(--text)">'+p.rc+'</b> yeniden paylaşım</div>'+acts+'</article>';
+'<div class="meta">'+zulu(p.ts)+' · '+fullDate(p.ts)+(p.ed?' '+tx('· düzenlendi'):"")+' · <b style="color:var(--text)">'+p.lc+'</b> Roger · <b style="color:var(--text)">'+p.rc+'</b> yeniden paylaşım</div>'+acts+'</article>';
 }
-return '<article class="post" style="--rc:'+rc+'" data-act="open" data-id="'+p.id+'">'+avatar(u)+
+return '<article class="post" style="--rc:'+rc+'" data-act="open" data-id="'+oid+'">'+avatar(u)+
 '<div class="body"><div class="head"><b data-user="'+esc(p.h)+'">'+esc(p.n)+'</b>'+vbadge(p.v)+'<span class="h">@'+esc(p.h)+'</span>'+roleChip(p.r)+orgBadge(p.org)+'<span class="t" title="'+zulu(p.ts)+'">'+ago(p.ts)+(p.ed?" "+tx("· düz."):"")+'</span>'+menu+'</div>'+
 (p.ti?'<div class="ttl">'+esc(ttl(p.ti))+'</div>':"")+(p.k==="question"?'<div class="qtag"><span>? SORU</span>'+(p.tp?' · <span>'+esc(p.tp)+'</span>':"")+(p.ac?' <i class="ok">✓ ÇÖZÜLDÜ</i>':"")+'</div>':"")+(opt.best?'<div class="qtag best">✓ KABUL EDİLEN CEVAP</div>':"")+
-(p.p&&!opt.hideReplying?'<div class="replying">↩ YANIT</div>':"")+'<div class="text">'+rich(p.t)+'</div>'+img+acts+'</div></article>';
+(plain?'<div class="relh">'+ic("repeat",14)+'<b>@'+esc(p.h)+'</b><span>Relay etti</span></div>':"")+(p.p&&!opt.hideReplying?'<div class="replying">↩ YANIT</div>':"")+(plain?"":'<div class="text">'+rich(p.t)+'</div>')+img+acts+'</div></article>';
 }
 function composer(id,ph,draft,btn){
 var n=draft.length,cls=n>MAX?"over":(n>MAX-30?"warn":"");
 return '<div class="composer">'+avatar({h:S.me.handle,n:S.me.display_name,av:S.me.avatar_url,r:S.me.role})+'<div style="flex:1;min-width:0">'+
 '<textarea id="'+id+'" placeholder="'+esc(ph)+'" rows="2">'+esc(draft)+'</textarea>'+
-(id==="draft"&&S.img?'<div class="attach"><img src="'+esc(S.img.url)+'" alt=""><button data-act="rmImg" title="Kaldır">'+ic("x",14)+'</button></div>':"")+
+(id==="draft"&&S.imgs.length?'<div class="attach">'+S.imgs.map(function(m,i){return '<span class="ai"><img src="'+esc(m.url)+'" alt=""><button data-act="rmImg" data-id="'+i+'" title="Kaldır">'+ic("x",14)+'</button></span>';}).join("")+'</div>':"")+
 (id==="draft"?'<div class="qrow"><span class="chip '+(S.dk==="question"?"on":"")+'" data-act="dkind">? Soru sor</span>'+(S.dk==="question"?'<select data-m="dtopic" id="dtopic">'+TOPICS.map(function(t){return '<option'+(S.dtopic===t?' selected':'')+'>'+esc(t)+'</option>';}).join("")+'</select>':"")+'</div>':"")+'<div class="row">'+(id==="draft"?'<button class="tool" data-act="pickImg" title="Fotoğraf ekle">'+ic("image",20)+'</button>':"")+'<span class="sp"></span>'+(id==="draft"?ring(n):"")+'<span class="cn '+cls+'" id="'+id+'Cnt">'+(MAX-n)+'</span>'+
 '<button class="btn sm" id="'+id+'Btn" data-act="'+(id==="reply"?"sendReply":"send")+'" '+((!draft.trim()||n>MAX||S.busy)?"disabled":"")+'>'+(S.busy?"…":btn)+'</button></div></div></div>';
 }
@@ -868,8 +887,8 @@ return Object.keys(T).map(function(k){return '<div class="card"><h3>'+esc(T[k][0
 function pageLegal(){return backBar("Yasal")+'<div class="note" style="text-align:left;margin:12px 16px">Bu metinler genel bilgilendirme niteliğindedir; yayına almadan önce bir hukukçuya gözden geçirtilmesi önerilir.</div>'+legalHTML();}
 function pageBookmarks(){return '<div class="topbar"><h1>Yer İmleri <small>Kayıtlı</small></h1></div>'+listPosts(S.posts,"Henüz yer imi yok. Bir gönderideki bayrak simgesine dokun.");}
 function pageNotifs(){
-var icons={like:["heart","var(--red)"],reply:["chat","var(--ac)"],follow:["users","var(--green)"],repost:["repeat","var(--green)"],follow_request:["lock","var(--ac)"]};
-var txt={like:"gönderini beğendi",reply:"gönderine yanıt verdi",follow:"seni takip etti",repost:"gönderini yeniden paylaştı",follow_request:"sana takip isteği gönderdi"};
+var icons={like:["roger","var(--green)"],reply:["chat","var(--ac)"],follow:["users","var(--green)"],repost:["repeat","var(--green)"],follow_request:["lock","var(--ac)"]};
+var txt={like:"gönderine Roger dedi",reply:"gönderine yanıt verdi",follow:"seni takip etti",repost:"gönderini yeniden paylaştı",follow_request:"sana takip isteği gönderdi"};
 var html='<div class="topbar"><h1>Bildirimler <small>Alıcı</small></h1></div>';
 if(S.loading&&!S.notifs.length)return html+loadr();
 if(!S.notifs.length)return html+'<div class="empty">Henüz bildirim yok.</div>';
@@ -894,7 +913,7 @@ if(u.home_base)info.push('<span class="mono" data-icao="'+esc(u.home_base)+'" st
 if(u.location)info.push('<span>'+ic("map",15)+esc(u.location)+'</span>');
 if(u.website)info.push('<span>'+ic("link",15)+'<a href="'+esc(u.website)+'" target="_blank" rel="noopener noreferrer nofollow">'+esc(u.website.replace(/^https?:\/\//,""))+'</a></span>');
 info.push('<span>'+ic("cal",15)+fullDate(new Date(u.created_at).getTime())+' tarihinde katıldı</span>');
-var tabs=[["posts","Gönderiler"],["replies","Yanıtlar"],["media","Medya"]];if(mine)tabs.push(["likes","Beğeniler"]);
+var tabs=[["posts","Gönderiler"],["replies","Yanıtlar"],["media","Medya"]];if(mine)tabs.push(["likes","Roger"]);
 var body;
 if(stt.locked)body='<div class="lock">'+ic("lock",30)+'<div style="margin-top:8px"><b style="color:var(--text)">Bu hesap gizli</b></div>Gönderilerini görmek için takip isteği gönder.</div>';
 else{body='<div class="tabs">'+tabs.map(function(t){return '<button class="'+(S.ptab===t[0]?"on":"")+'" data-act="ptab" data-v="'+t[0]+'">'+t[1]+'</button>';}).join("")+'</div>'+
@@ -1031,6 +1050,11 @@ inner='<h3>Şikayet et</h3>'+REASONS.map(function(r){return '<label class="opt">
 }else if(m.t==="edit"){
 var n=(S.mf.text||"").length;
 inner='<h3>Gönderiyi düzenle</h3><textarea id="edtxt" data-m="text" maxlength="'+MAX+'" rows="4">'+esc(S.mf.text||"")+'</textarea><div class="acts2"><span class="cn" style="align-self:center" id="edcnt">'+(MAX-n)+'</span><button class="btn ghost" data-act="mClose">Vazgeç</button><button class="btn" data-act="doEdit">Kaydet</button></div>';
+}else if(m.t==="relay"){
+var rp0=m.post;inner='<div class="menu"><button data-act="mRelay">'+ic("repeat",18)+(rp0.rp?"Relay'i geri al":"Relay")+'</button><button data-act="mQuote">'+ic("edit",18)+'Alıntıyla relay</button></div>';
+}else if(m.t==="quote"){
+var qn=(S.mf.text||"").length;
+inner='<h3>Alıntıyla relay</h3><textarea id="edtxt" data-m="text" maxlength="'+MAX+'" rows="3" placeholder="Yorum ekle">'+esc(S.mf.text||"")+'</textarea>'+quoteHTML({qo:m.post.id,q:{id:m.post.id,n:m.post.n,h:m.post.h,v:m.post.v,t:m.post.t,im:(m.post.im&&m.post.im.length?m.post.im:(m.post.img?[m.post.img]:[]))}}).replace(' data-act="open"','')+'<div class="acts2"><span class="cn" style="align-self:center" id="edcnt">'+(MAX-qn)+'</span><button class="btn ghost" data-act="mClose">Vazgeç</button><button class="btn" data-act="doQuote">Relay</button></div>';
 }else if(m.t==="del"){
 inner='<h3>Gönderi silinsin mi?</h3><p style="color:var(--muted)">Bu işlem geri alınamaz. Yanıtlar ve beğeniler de silinir.</p><div class="acts2"><button class="btn ghost" data-act="mClose">Vazgeç</button><button class="btn danger" data-act="doDelete">Sil</button></div>';
 }else if(m.t==="delacct"){
@@ -1115,7 +1139,7 @@ else if(!S.me)APP.innerHTML=authView()+toastHTML();
 else{
 var main;
 switch(S.view){case "explore":main=pageExplore();break;case "notifs":main=pageNotifs();break;case "profile":main=pageProfile();break;case "thread":main=pageThread();break;case "tag":main=pageTag();break;case "bookmarks":main=pageBookmarks();break;case "settings":main=pageSettings();break;case "edit":main=pageEdit();break;case "people":main=pagePeople();break;case "admin":main=pageAdmin();break;case "airport":main=pageAirport();break;case "qa":main=pageQA();break;case "jobs":main=pageJobs();break;case "legal":main=pageLegal();break;default:main=pageHome();}
-APP.innerHTML='<div class="shell">'+sidebar()+'<main>'+main+'</main>'+rightcol()+'</div>'+bottomnav()+'<input type="file" id="fp" accept="image/*" hidden><input type="file" id="fa" accept="image/*" hidden>'+modalHTML()+toastHTML();
+APP.innerHTML='<div class="shell">'+sidebar()+'<main>'+main+'</main>'+rightcol()+'</div>'+bottomnav()+'<input type="file" id="fp" accept="image/*" multiple hidden><input type="file" id="fa" accept="image/*" hidden>'+modalHTML()+toastHTML();
 }
 APP.insertAdjacentHTML("beforeend",langUI());L10N(APP);
 if(fid){var el=fkey==="id"?document.getElementById(fid):document.querySelector('[data-'+fkey+'="'+fid+'"]');if(el){el.focus();if(pos!=null&&el.setSelectionRange)try{el.setSelectionRange(pos,pos);}catch(e){}}}
@@ -1144,7 +1168,9 @@ case "tab":S.tab=v;loadView();break;
 case "filter":S.filter=v;loadView();break;case "hfilter":S.hf=v;loadView();break;case "dkind":S.dk=S.dk==="question"?"post":"question";render();break;case "airport":go("airport",v);break;case "qtab":S.qtab=v;loadView();break;case "jk":S.jk=v;loadView();break;case "jform":S.jform=!S.jform;render();break;case "postJob":postJob();break;case "reqOrg":reqOrg();break;case "accept":acceptAns(id,el.getAttribute("data-r")||null);break;
 case "qset":S.q=v;loadView();break;
 case "like":toggleOn("likes","post_id",id,"lk","lc");break;
-case "rp":toggleOn("reposts","post_id",id,"rp","rc");break;
+case "rp":var rpp=findPost(id);if(rpp){S.modal={t:"relay",post:rpp};render();}break;
+case "mRelay":doRelay();break;case "doQuote":doQuote();break;
+case "mQuote":S.mf={text:""};S.modal={t:"quote",post:S.modal.post};render();setTimeout(function(){var x=document.getElementById("edtxt");if(x)x.focus();},30);break;
 case "bm":toggleOn("bookmarks","post_id",id,"bm",null);break;
 case "open":go("thread",id);break;
 case "profile":go("profile",uh);break;
@@ -1152,9 +1178,9 @@ case "follow":toggleFollow(uh);break;
 case "back":back();break;
 case "compose":S.stack=[];S.tab="all";S.view="home";S.param=null;resetLists();loadView();setTimeout(function(){var d=document.getElementById("draft");if(d)d.focus();},60);break;
 case "send":send(null);break;case "sendReply":send(S.param);break;
-case "pickImg":document.getElementById("fp").click();break;
+case "pickImg":if(S.imgs.length>=4){toast("En fazla 4 fotoğraf ekleyebilirsin.");break;}document.getElementById("fp").click();break;
 case "pickAv":document.getElementById("fa").click();break;
-case "rmImg":S.img=null;render();break;
+case "rmImg":S.imgs.splice(+id,1);render();break;
 case "zoom":S.modal={t:"img",src:el.getAttribute("data-src")};render();break;
 case "menu":var p=findPost(id);if(p){S.modal={t:"menu",post:p};render();}break;
 case "umenu":S.modal={t:"umenu",u:S.prof};render();break;
@@ -1227,11 +1253,15 @@ else if(id==="tq"){S.tq=el.value;render();}
 document.addEventListener("change",function(e){
 var el=e.target,f=el.files&&el.files[0];
 if(el.id==="fp"||el.id==="fa"){
-if(!f)return;
+var fl=[].slice.call(el.files||[]);if(!fl.length)return;
+if(el.id==="fa")fl=fl.slice(0,1);
+fl.forEach(function(f){
 if(!/^image\//.test(f.type)){toast("Lütfen bir görsel seç.");return;}
 if(f.size>15*1024*1024){toast("Görsel çok büyük (en fazla 15 MB).");return;}
 var url=URL.createObjectURL(f);
-if(el.id==="fp"){S.img={file:f,url:url};}else{S.ef.file=f;S.ef.prev=url;}
+if(el.id==="fp"){if(S.imgs.length<4)S.imgs.push({file:f,url:url});else toast("En fazla 4 fotoğraf ekleyebilirsin.");}else{S.ef.file=f;S.ef.prev=url;}
+});
+try{el.value="";}catch(x){}
 render();
 }
 });
