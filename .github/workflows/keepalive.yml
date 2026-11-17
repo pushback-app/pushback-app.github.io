@@ -17,11 +17,14 @@ jobs:
           curl -fsS "https://lodaopndsdahfcenrzxj.supabase.co/functions/v1/wx?ids=LTFM" -H "apikey: $K" > /dev/null
           curl -fsS "https://squawk-app.github.io/" > /dev/null
       - name: Repo heartbeat (keeps schedules enabled)
-        if: github.event_name == 'workflow_dispatch' || github.run_number % 20 == 0
+        env:
+          EVENT: ${{ github.event_name }}
         run: |
-          date -u +"%Y-%m-%dT%H:%M:%SZ" > heartbeat.txt
-          git config user.name "keepalive-bot"
-          git config user.email "keepalive-bot@users.noreply.github.com"
-          git add heartbeat.txt
-          git commit -m "heartbeat" || exit 0
-          git push
+          if [ "$EVENT" = "workflow_dispatch" ] || [ "$(date -u +%d)" = "01" ]; then
+            date -u +"%Y-%m-%dT%H:%M:%SZ" > heartbeat.txt
+            git config user.name "keepalive-bot"
+            git config user.email "keepalive-bot@users.noreply.github.com"
+            git add heartbeat.txt
+            git commit -m "heartbeat" || exit 0
+            git push
+          fi
